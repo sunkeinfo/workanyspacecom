@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing & Plans – WorkAnySpace</title>
+  <meta name="description" content="Transparent pricing for your cloud desktop. Start free for 30 days, then choose the plan that fits your needs." />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SPVFYB1VT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0SPVFYB1VT');
+  </script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Work<span>Any</span>Space</a>
+  <ul class="nav-links">
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="security.html">Security</a></li>
+    <li><a href="help.html">Help</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="dashboard.html" class="btn-outline">Login</a>
+    <a href="pricing.html" class="btn-primary">Start Free Trial</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Simple, Transparent Pricing</h1>
+  <p>Start completely free for 30 days. After that, keep your workspace at a price that makes sense.</p>
+</div>
+
+<section style="background: var(--bg-light);">
+  <div class="section-inner">
+    <div class="section-label">Pricing Plans</div>
+    <h2 class="section-title">Choose Your Plan</h2>
+    <p class="section-sub">All plans include a FREE 30-day trial — no credit card required</p>
+
+    <div class="pricing-grid">
+      <div class="plan-card" onclick="selectPlan('starter')" style="cursor:pointer;">
+        <div class="plan-name">Starter</div>
+        <div class="plan-specs">2 vCPU · 4 GB RAM · 80 GB Storage</div>
+        <div class="plan-price-block">
+          <div class="plan-price-free">$0 <span class="plan-price-free-label">first 30 days</span></div>
+          <div class="plan-price-after">then $25 / month</div>
+        </div>
+        <ul class="plan-features">
+          <li>2 vCPU cores</li>
+          <li>4 GB RAM</li>
+          <li>80 GB SSD Storage</li>
+          <li>Windows 10/11 Desktop</li>
+          <li>All-device access</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started Free</a>
+      </div>
+
+      <div class="plan-card popular" onclick="selectPlan('standard')" style="cursor:pointer;">
+        <span class="popular-badge">Most Popular</span>
+        <div class="plan-name">Standard</div>
+        <div class="plan-specs">2 vCPU · 8 GB RAM · 100 GB Storage</div>
+        <div class="plan-price-block">
+          <div class="plan-price-free">$0 <span class="plan-price-free-label">first 30 days</span></div>
+          <div class="plan-price-after">then $45 / month</div>
+        </div>
+        <ul class="plan-features">
+          <li>2 vCPU cores</li>
+          <li>8 GB RAM</li>
+          <li>100 GB SSD Storage</li>
+          <li>Windows 10/11 Desktop</li>
+          <li>All-device access</li>
+          <li>Priority email support</li>
+        </ul>
+        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started Free</a>
+      </div>
+
+      <div class="plan-card" onclick="selectPlan('performance')" style="cursor:pointer;">
+        <div class="plan-name">Performance</div>
+        <div class="plan-specs">4 vCPU · 16 GB RAM · 175 GB Storage</div>
+        <div class="plan-price-block">
+          <div class="plan-price-free">$0 <span class="plan-price-free-label">first 30 days</span></div>
+          <div class="plan-price-after">then $85 / month</div>
+        </div>
+        <ul class="plan-features">
+          <li>4 vCPU cores</li>
+          <li>16 GB RAM</li>
+          <li>175 GB SSD Storage</li>
+          <li>Windows 10/11 Desktop</li>
+          <li>All-device access</li>
+          <li>Priority support + chat</li>
+        </ul>
+        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started Free</a>
+      </div>
+
+      <div class="plan-card" onclick="selectPlan('power')" style="cursor:pointer;">
+        <div class="plan-name">Power</div>
+        <div class="plan-specs">8 vCPU · 32 GB RAM · 350 GB Storage</div>
+        <div class="plan-price-block">
+          <div class="plan-price-free">$0 <span class="plan-price-free-label">first 30 days</span></div>
+          <div class="plan-price-after">then $160 / month</div>
+        </div>
+        <ul class="plan-features">
+          <li>8 vCPU cores</li>
+          <li>32 GB RAM</li>
+          <li>350 GB SSD Storage</li>
+          <li>Windows 10/11 Desktop</li>
+          <li>All-device access</li>
+          <li>Dedicated support</li>
+        </ul>
+        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started Free</a>
+      </div>
+    </div>
+
+    <div style="background:#F0FDF4; border:1px solid #BBF7D0; border-radius:12px; padding:1.25rem; margin-top:2rem; font-size:0.875rem; color:#166534;">
+      💡 <strong>Billing is monthly, cancel anytime.</strong> No setup fees, no hidden charges. You'll receive an email reminder on Day 25 of your trial before any billing begins.
+    </div>
+  </div>
+</section>
+
+<section class="order-section" id="order">
+  <div class="section-inner">
+    <div class="section-label">Get Started</div>
+    <h2 class="section-title" style="color:#1A1A2E;">Start Your Free Trial</h2>
+    <p style="color:#5A6C7D; margin-bottom:2rem;">Fill in your details below to claim your free 30-day trial.</p>
+    <div class="order-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fname">👤 Full Name</label>
+          <input type="text" id="fname" placeholder="Your full name" />
+        </div>
+        <div class="form-group">
+          <label for="email">✉️ Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="region">🌍 AWS Region</label>
+          <select id="region">
+            <option value="">— Select a Region —</option>
+            <option value="us-east-1">US East (N. Virginia)</option>
+            <option value="us-west-2">US West (Oregon)</option>
+            <option value="ca-central-1">Canada (Central)</option>
+            <option value="eu-west-1">Europe (Ireland)</option>
+            <option value="eu-central-1">Europe (Frankfurt)</option>
+            <option value="eu-west-2">Europe (London)</option>
+            <option value="eu-west-3">Europe (Paris)</option>
+            <option value="ap-northeast-1">Asia Pacific (Tokyo)</option>
+            <option value="ap-northeast-2">Asia Pacific (Seoul)</option>
+            <option value="ap-southeast-1">Asia Pacific (Singapore)</option>
+            <option value="ap-southeast-2">Asia Pacific (Sydney)</option>
+            <option value="ap-south-1">Asia Pacific (Mumbai)</option>
+            <option value="sa-east-1">South America (São Paulo)</option>
+            <option value="af-south-1">Africa (Cape Town)</option>
+            <option value="il-central-1">Israel (Tel Aviv)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="config">⚙️ Desktop Configuration</label>
+          <select id="config">
+            <option value="">— Select Configuration —</option>
+            <option value="starter">Starter — 2 vCPU / 4 GB RAM / 80 GB ($25/mo)</option>
+            <option value="standard">Standard — 2 vCPU / 8 GB RAM / 100 GB ($45/mo)</option>
+            <option value="performance">Performance — 4 vCPU / 16 GB RAM / 175 GB ($85/mo)</option>
+            <option value="power">Power — 8 vCPU / 32 GB RAM / 350 GB ($160/mo)</option>
+          </select>
+        </div>
+      </div>
+      <input type="hidden" id="ip_address" value="" />
+      <div style="margin-top:2rem; padding:1.25rem; background:rgba(255, 107, 53, 0.08); border:2px solid #FFD4B8; border-radius:14px;">
+        <div style="color:#1A1A2E; font-size:0.9rem; font-weight:600; margin-bottom:0.5rem;">🔍 Optional: Boost Your Approval Rate</div>
+        <p style="color:#5A6C7D; font-size:0.8rem; margin-bottom:1rem;">Providing your social media profiles helps us verify you're a real person and significantly increases the chance of your free trial being approved instantly.</p>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="facebook">📘 Facebook Profile URL</label>
+            <input type="url" id="facebook" placeholder="https://facebook.com/yourprofile" />
+          </div>
+          <div class="form-group">
+            <label for="twitter">𝕏 X / Twitter Profile URL</label>
+            <input type="url" id="twitter" placeholder="https://x.com/yourhandle" />
+          </div>
+          <div class="form-group full">
+            <label for="linkedin">💼 LinkedIn Profile URL</label>
+            <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <button class="btn-primary btn-large" onclick="submitForm()" id="submit-btn">
+          🚀 Claim My Free 30-Day Trial
+        </button>
+        <p style="color:#5A6C7D; font-size:0.8rem; margin-top:0.75rem;">
+          🔒 Basic identity verification required &nbsp;·&nbsp; No charge for 30 days
+        </p>
+      </div>
+      <div id="success-msg" style="display:none; margin-top:1rem; background:rgba(0, 184, 148, 0.15); border:2px solid rgba(0, 184, 148, 0.4); border-radius:10px; padding:1rem; color:#00B894; font-size:0.9rem;">
+        ✅ <strong>Success!</strong> Check your email for setup instructions. Your workspace will be ready within 15 minutes.
+      </div>
+      <div id="error-msg" style="display:none; margin-top:1rem; background:rgba(255, 107, 53, 0.15); border:2px solid rgba(255, 107, 53, 0.4); border-radius:10px; padding:1rem; color:#FF6B35; font-size:0.9rem;">
+        ❌ <strong>Error!</strong> Please fill in all required fields.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Work<span>Any</span>Space</a>
+      <p>Your personal cloud desktop, powered by Amazon WorkSpaces.</p>
+    </div>
+    <div class="footer-col"><h4>Product</h4><ul>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Support</h4><ul>
+      <li><a href="help.html">Help Center</a></li>
+      <li><a href="dashboard.html">Client Portal</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 WorkAnySpace.com — Powered by Amazon Web Services</span>
+    <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+const regionNames = {'us-east-1':'US East (N. Virginia)','us-west-2':'US West (Oregon)','ca-central-1':'Canada (Central)','eu-west-1':'Europe (Ireland)','eu-central-1':'Europe (Frankfurt)','eu-west-2':'Europe (London)','eu-west-3':'Europe (Paris)','ap-northeast-1':'Asia Pacific (Tokyo)','ap-northeast-2':'Asia Pacific (Seoul)','ap-southeast-1':'Asia Pacific (Singapore)','ap-southeast-2':'Asia Pacific (Sydney)','ap-south-1':'Asia Pacific (Mumbai)','sa-east-1':'South America (Sao Paulo)','af-south-1':'Africa (Cape Town)','il-central-1':'Israel (Tel Aviv)'};
+const configPrices = {'starter':'25','standard':'45','performance':'85','power':'160'};
+const configNames = {'starter':'Starter - 2 vCPU / 4 GB RAM','standard':'Standard - 2 vCPU / 8 GB RAM','performance':'Performance - 4 vCPU / 16 GB RAM','power':'Power - 8 vCPU / 32 GB RAM'};
+
+fetch('https://checkip.amazonaws.com').then(function(response){return response.text();}).then(function(ip){document.getElementById('ip_address').value=ip.trim();}).catch(function(){document.getElementById('ip_address').value='N/A';});
+
+function selectPlan(plan){
+  document.getElementById('config').value = plan;
+  document.location.hash = '#order';
+  setTimeout(function(){
+    document.getElementById('config').focus();
+  }, 100);
+}
+
+function submitForm(){
+  var name = document.getElementById('fname').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var region = document.getElementById('region').value;
+  var config = document.getElementById('config').value;
+  var facebook = document.getElementById('facebook').value.trim() || '-';
+  var twitter = document.getElementById('twitter').value.trim() || '-';
+  var linkedin = document.getElementById('linkedin').value.trim() || '-';
+  var ip = document.getElementById('ip_address').value || 'N/A';
+  var errorMsg = document.getElementById('error-msg');
+  var successMsg = document.getElementById('success-msg');
+  
+  errorMsg.style.display = 'none';
+  successMsg.style.display = 'none';
+  
+  if(!name || !email || !region || !config){
+    errorMsg.style.display = 'block';
+    return;
+  }
+  
+  var regionName = regionNames[region];
+  var configName = configNames[config];
+  var price = configPrices[config];
+  var ipLink = ip !== 'N/A' ? '<a href="https://ipinfo.io/'+ip+'" style="color:#1D4ED8;font-family:monospace;">'+ip+'</a>' : 'N/A';
+  
+  var emailHtml = '<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;"><h2 style="color:#1D4ED8;">New Free Trial Registration</h2><table style="width:100%;border-collapse:collapse;margin-top:16px;"><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;width:160px;">Name</td><td style="padding:8px;border:1px solid #e2e8f0;">'+name+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Email</td><td style="padding:8px;border:1px solid #e2e8f0;">'+email+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Region</td><td style="padding:8px;border:1px solid #e2e8f0;">'+regionName+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Plan</td><td style="padding:8px;border:1px solid #e2e8f0;">'+configName+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Price After Trial</td><td style="padding:8px;border:1px solid #e2e8f0;">$'+price+'/month</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Facebook</td><td style="padding:8px;border:1px solid #e2e8f0;">'+facebook+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Twitter/X</td><td style="padding:8px;border:1px solid #e2e8f0;">'+twitter+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">LinkedIn</td><td style="padding:8px;border:1px solid #e2e8f0;">'+linkedin+'</td></tr><tr style="background:#FFF7ED;"><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#FFF7ED;">Visitor IP</td><td style="padding:8px;border:1px solid #e2e8f0;">'+ipLink+'</td></tr></table><p style="margin-top:20px;color:#64748b;font-size:13px;">Submitted at '+new Date().toUTCString()+'</p></div>';
+  
+  fetch('https://api.pingram.io/send',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'Accept':'application/json',
+      'Authorization':'Bearer pingram_sk_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJrZXlfOTRjZDJlOGFkOTYwMzU1OTJlOTAzZWI5NmU5ZDg5M2IiLCJ2ZXJzaW9uIjoxLCJhY2NvdW50SWQiOiIwOTdidWx1bGJkamZtOTY5eHJtcmlqaXo0MyIsImtleVR5cGUiOiJzZWNyZXQiLCJlbnZpcm9ubWVudElkIjoiMDk3YnVsdWxiZGpmbTk2OXhybXJpaml6NDMifQ.iNezQ3sgydRwDtWBQsYTITkfM9nEPeV5eS8VXBYYmDg'
+    },
+    body:JSON.stringify({
+      type:'email_compose_preview',
+      to:{email:'snaagk@gmail.com'},
+      email:{
+        subject:'New WorkAnySpace Trial Registration - '+name,
+        senderName:'WorkAnySpace',
+        senderEmail:'noreply@pingram.io',
+        html:emailHtml
+      }
+    })
+  }).then(function(response){
+    if(response.ok){
+      document.getElementById('submit-btn').style.display = 'none';
+      successMsg.style.display = 'block';
+      document.getElementById('fname').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('region').value = '';
+      document.getElementById('config').value = '';
+      document.getElementById('facebook').value = '';
+      document.getElementById('twitter').value = '';
+      document.getElementById('linkedin').value = '';
+    }else{
+      errorMsg.textContent = '❌ Error! Failed to send email. Please try again.';
+      errorMsg.style.display = 'block';
+    }
+  }).catch(function(error){
+    errorMsg.textContent = '❌ Error! '+error.message;
+    errorMsg.style.display = 'block';
+  });
+}
+</script>
+
+</body>
+</html>
