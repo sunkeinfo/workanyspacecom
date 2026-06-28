@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /pricing2.html
+
+Sitemap: https://www.workanyspace.com/sitemap.xml
