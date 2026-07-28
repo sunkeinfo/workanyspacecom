@@ -30,7 +30,6 @@
     <li><a href="about.html">About</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="dashboard.html" class="btn-outline">Login</a>
     <a href="pricing.html" class="btn-primary">Start Free Trial</a>
   </div>
 </nav>
@@ -56,7 +55,6 @@
           <li><strong>Account information:</strong> Full name, email address, and password.</li>
           <li><strong>Billing information:</strong> Payment method details (processed securely via third-party payment processors; we do not store card numbers).</li>
           <li><strong>Usage data:</strong> Login timestamps, session duration, and workspace region selection.</li>
-          <li><strong>Optional social profiles:</strong> Facebook, Twitter/X, or LinkedIn URLs provided voluntarily during registration to assist identity verification.</li>
           <li><strong>Support communications:</strong> Messages and information you submit via support tickets.</li>
           <li><strong>Technical data:</strong> IP address, browser type, and device information collected automatically via cookies and analytics tools.</li>
         </ul>
@@ -67,7 +65,7 @@
         <ul style="font-size:0.9rem; color:var(--text-muted); line-height:1.8; padding-left:1.5rem;">
           <li>To provision and manage your Amazon WorkSpaces cloud desktop.</li>
           <li>To process payments and send billing notifications.</li>
-          <li>To send service-related emails, including trial expiry reminders (Day 25 notification).</li>
+          <li>To send service-related emails, including trial expiry reminders (Day 5 notification).</li>
           <li>To verify your identity and prevent fraudulent use of the free trial.</li>
           <li>To respond to support tickets and customer inquiries.</li>
           <li>To improve our website and services using aggregated, anonymized analytics data.</li>
@@ -147,7 +145,6 @@
     </ul></div>
     <div class="footer-col"><h4>Support</h4><ul>
       <li><a href="help.html">Help Center</a></li>
-      <li><a href="dashboard.html">Client Portal</a></li>
     </ul></div>
     <div class="footer-col"><h4>Company</h4><ul>
       <li><a href="about.html">About Us</a></li>
@@ -160,6 +157,22 @@
     <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a></span>
   </div>
 </footer>
+
+<script>
+  (function(d,t) {
+    var BASE_URL="https://app.chatwoot.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'YqMaUxyNu1opMcPJSpZGg3Go',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script>
 
 </body>
 </html>

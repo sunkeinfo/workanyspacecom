@@ -29,7 +29,6 @@
     <li><a href="about.html">About</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="dashboard.html" class="btn-outline">Login</a>
     <a href="pricing.html" class="btn-primary">Start Free Trial</a>
   </div>
 </nav>
@@ -69,11 +68,11 @@
 
       <!-- TRIAL PROGRESS -->
       <div class="trial-bar">
-        <h4>🎉 Free Trial Active — 6 days used of 30</h4>
+        <h4>🎉 Free Trial Active — 3 days used of 7</h4>
         <div class="progress-track">
-          <div class="progress-fill" style="width:20%;"></div>
+          <div class="progress-fill" style="width:43%;"></div>
         </div>
-        <p>24 days remaining in your free trial. We'll send you a reminder email on Day 25.</p>
+        <p>4 days remaining in your free trial. We'll send you a reminder email on Day 5.</p>
       </div>
 
       <!-- STATS -->
@@ -377,6 +376,22 @@ function submitTicket() {
     btn.disabled = false;
   });
 }
+</script>
+
+<script>
+  (function(d,t) {
+    var BASE_URL="https://app.chatwoot.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'YqMaUxyNu1opMcPJSpZGg3Go',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
 </script>
 </body>
 </html>

@@ -41,15 +41,15 @@
         "name": "Do I need a credit card to start the free trial?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No credit card is required to start your 30-day free trial. We do require basic identity verification to prevent abuse and ensure the service remains available for genuine users. You will only be asked for payment information when you choose to continue after the trial period."
+          "text": "No credit card is required to start your 7-day free trial. We do require basic identity verification to prevent abuse and ensure the service remains available for genuine users. You will only be asked for payment information when you choose to continue after the trial period."
         }
       },
       {
         "@type": "Question",
-        "name": "What happens when my 30-day trial ends?",
+        "name": "What happens when my 7-day trial ends?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "On Day 25 of your trial, we'll send you an email reminder. If you choose to continue, your workspace will automatically convert to a paid monthly subscription at the price shown on your plan. If you don't want to continue, simply cancel before Day 30 and you won't be charged anything."
+          "text": "On Day 5 of your trial, we'll send you an email reminder. If you choose to continue, your workspace will automatically convert to a paid monthly subscription at the price shown on your plan. If you don't want to continue, simply cancel before Day 7 and you won't be charged anything."
         }
       },
       {
@@ -135,7 +135,6 @@
     <li><a href="about.html">About</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="dashboard.html" class="btn-outline">Login</a>
     <a href="pricing.html" class="btn-primary">Start Free Trial</a>
   </div>
 </nav>
@@ -206,14 +205,14 @@
         <div class="faq-q" onclick="toggleFaq(this)">
           Do I need a credit card to start the free trial? <span class="faq-arrow">▼</span>
         </div>
-        <div class="faq-a">No credit card is required to start your 30-day free trial. We do require basic identity verification to prevent abuse and ensure the service remains available for genuine users. You will only be asked for payment information when you choose to continue after the trial period.</div>
+        <div class="faq-a">No credit card is required to start your 7-day free trial. We do require basic identity verification to prevent abuse and ensure the service remains available for genuine users. You will only be asked for payment information when you choose to continue after the trial period.</div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          What happens when my 30-day trial ends? <span class="faq-arrow">▼</span>
+          What happens when my 7-day trial ends? <span class="faq-arrow">▼</span>
         </div>
-        <div class="faq-a">On Day 25 of your trial, we'll send you an email reminder. If you choose to continue, your workspace will automatically convert to a paid monthly subscription at the price shown on your plan. If you don't want to continue, simply cancel before Day 30 and you won't be charged anything.</div>
+        <div class="faq-a">On Day 5 of your trial, we'll send you an email reminder. If you choose to continue, your workspace will automatically convert to a paid monthly subscription at the price shown on your plan. If you don't want to continue, simply cancel before Day 7 and you won't be charged anything.</div>
       </div>
 
       <div class="faq-item">
@@ -273,10 +272,9 @@
 <section style="background: var(--bg-light);">
   <div class="section-inner" style="text-align:center;">
     <h2 class="section-title">Still have questions?</h2>
-    <p class="section-sub" style="margin: 0 auto 2rem;">Our support team is here to help. Submit a ticket from your dashboard or reach out directly.</p>
+    <p class="section-sub" style="margin: 0 auto 2rem;">Our support team is here to help. Reach out directly and we'll get back to you.</p>
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-      <a href="dashboard.html" class="btn-primary btn-large">Submit a Support Ticket</a>
-      <a href="mailto:support@workanyspace.com" class="btn-outline btn-large" style="color:var(--text-dark); border-color:var(--border);">Email Support</a>
+      <a href="mailto:support@workanyspace.com" class="btn-primary btn-large">Email Support</a>
     </div>
   </div>
 </section>
@@ -294,7 +292,6 @@
     </ul></div>
     <div class="footer-col"><h4>Support</h4><ul>
       <li><a href="help.html">Help Center</a></li>
-      <li><a href="dashboard.html">Client Portal</a></li>
     </ul></div>
     <div class="footer-col"><h4>Company</h4><ul>
       <li><a href="about.html">About Us</a></li>
@@ -312,6 +309,22 @@ function toggleFaq(el) {
   const item = el.parentElement;
   item.classList.toggle('open');
 }
+</script>
+
+<script>
+  (function(d,t) {
+    var BASE_URL="https://app.chatwoot.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'YqMaUxyNu1opMcPJSpZGg3Go',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
 </script>
 </body>
 </html>

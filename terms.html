@@ -30,7 +30,6 @@
     <li><a href="about.html">About</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="dashboard.html" class="btn-outline">Login</a>
     <a href="pricing.html" class="btn-primary">Start Free Trial</a>
   </div>
 </nav>
@@ -62,10 +61,10 @@
       <div>
         <h2 style="font-size:1.2rem; font-weight:700; margin-bottom:0.75rem; color:var(--text-dark);">3. Free Trial</h2>
         <ul style="font-size:0.9rem; color:var(--text-muted); line-height:1.8; padding-left:1.5rem;">
-          <li>New users are eligible for one (1) free 30-day trial per person.</li>
+          <li>New users are eligible for one (1) free 7-day trial per person.</li>
           <li>The free trial requires basic identity verification. Providing false information to obtain multiple trials constitutes fraud and may result in account termination.</li>
-          <li>We will send a reminder email on Day 25 of your trial before any billing begins.</li>
-          <li>If you do not cancel before Day 30, your account will automatically convert to a paid monthly subscription at the rate shown on your selected plan.</li>
+          <li>We will send a reminder email on Day 5 of your trial before any billing begins.</li>
+          <li>If you do not cancel before Day 7, your account will automatically convert to a paid monthly subscription at the rate shown on your selected plan.</li>
           <li>WorkAnySpace reserves the right to deny or terminate free trials at its sole discretion.</li>
         </ul>
       </div>
@@ -161,7 +160,6 @@
     </ul></div>
     <div class="footer-col"><h4>Support</h4><ul>
       <li><a href="help.html">Help Center</a></li>
-      <li><a href="dashboard.html">Client Portal</a></li>
     </ul></div>
     <div class="footer-col"><h4>Company</h4><ul>
       <li><a href="about.html">About Us</a></li>
@@ -174,6 +172,22 @@
     <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a></span>
   </div>
 </footer>
+
+<script>
+  (function(d,t) {
+    var BASE_URL="https://app.chatwoot.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'YqMaUxyNu1opMcPJSpZGg3Go',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script>
 
 </body>
 </html>
