@@ -383,7 +383,7 @@ function submitForm(){
     })
   }).then(function(response){
     if(response.ok){
-      var gumroadUrl = 'https://workanyspacecom.gumroad.com/l/workanyspace?wanted=true&email=' + encodeURIComponent(email);
+      var gumroadUrl = 'https://workanyspacecom.gumroad.com/l/workanyspace?email=' + encodeURIComponent(email);
       window.location.href = gumroadUrl;
     }else{
       errorMsg.textContent = '❌ Error! Failed to send email. Please try again.';
