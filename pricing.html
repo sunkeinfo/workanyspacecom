@@ -329,6 +329,7 @@
 const regionNames = {'us-east-1':'US East (N. Virginia)','us-west-2':'US West (Oregon)','ca-central-1':'Canada (Central)','eu-west-1':'Europe (Ireland)','eu-central-1':'Europe (Frankfurt)','eu-west-2':'Europe (London)','eu-west-3':'Europe (Paris)','ap-northeast-1':'Asia Pacific (Tokyo)','ap-northeast-2':'Asia Pacific (Seoul)','ap-southeast-1':'Asia Pacific (Singapore)','ap-southeast-2':'Asia Pacific (Sydney)','ap-south-1':'Asia Pacific (Mumbai)','sa-east-1':'South America (Sao Paulo)','af-south-1':'Africa (Cape Town)','il-central-1':'Israel (Tel Aviv)'};
 const configPrices = {'starter':'25','standard':'45','performance':'85','power':'160'};
 const configNames = {'starter':'Starter - 2 vCPU / 4 GB RAM','standard':'Standard - 2 vCPU / 8 GB RAM','performance':'Performance - 4 vCPU / 16 GB RAM','power':'Power - 8 vCPU / 32 GB RAM'};
+const configGumroadOptionIds = {'starter':'kTq2nfCp0L3QysoNoMK2hg==','standard':'mr9GFkKGFaDr7B2cqz99KA==','performance':'odWqw7fm4hkUBSPLqIXKLw==','power':'ZrEocOJv-iWQtD5SiIFt8A=='};
 
 fetch('https://checkip.amazonaws.com').then(function(response){return response.text();}).then(function(ip){document.getElementById('ip_address').value=ip.trim();}).catch(function(){document.getElementById('ip_address').value='N/A';});
 
@@ -422,9 +423,11 @@ function submitForm(){
     .then(function(r){ console.log('Email sent:', r.status); })
     .catch(function(e){ console.warn('Email failed:', e); });
 
-    // 跳转到 Gumroad 结账页，预填 email 和 Full name
+    // 跳转到 Gumroad 结账页，预填 email、Full name，并通过 option_id 精确预选套餐
+    var _optionId = configGumroadOptionIds[config];
     var gumroadUrl = 'https://workanyspacecom.gumroad.com/l/workanyspace'
       + '?wanted=true'
+      + '&option_id=' + encodeURIComponent(_optionId)
       + '&email=' + encodeURIComponent(_email)
       + '&' + encodeURIComponent('Full name') + '=' + encodeURIComponent(_name);
     window.location.href = gumroadUrl;
