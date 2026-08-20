@@ -372,7 +372,7 @@ function submitForm(){
       'Authorization':'Bearer pingram_sk_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJrZXlfOTRjZDJlOGFkOTYwMzU1OTJlOTAzZWI5NmU5ZDg5M2IiLCJ2ZXJzaW9uIjoxLCJhY2NvdW50SWQiOiIwOTdidWx1bGJkamZtOTY5eHJtcmlqaXo0MyIsImtleVR5cGUiOiJzZWNyZXQiLCJlbnZpcm9ubWVudElkIjoiMDk3YnVsdWxiZGpmbTk2OXhybXJpaml6NDMifQ.iNezQ3sgydRwDtWBQsYTITkfM9nEPeV5eS8VXBYYmDg'
     },
     body:JSON.stringify({
-      type:'email_compose_preview',
+      type:'email',
       to:{email:'snaagk@gmail.com'},
       email:{
         subject:'New WorkAnySpace Trial Registration - '+name,
@@ -383,12 +383,8 @@ function submitForm(){
     })
   }).then(function(response){
     if(response.ok){
-      document.getElementById('submit-btn').style.display = 'none';
-      successMsg.style.display = 'block';
-      document.getElementById('fname').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('region').value = '';
-      document.getElementById('config').value = '';
+      var gumroadUrl = 'https://workanyspacecom.gumroad.com/l/workanyspace?wanted=true&email=' + encodeURIComponent(email);
+      window.location.href = gumroadUrl;
     }else{
       errorMsg.textContent = '❌ Error! Failed to send email. Please try again.';
       errorMsg.style.display = 'block';
