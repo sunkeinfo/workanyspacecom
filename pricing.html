@@ -329,12 +329,12 @@
 const regionNames = {'us-east-1':'US East (N. Virginia)','us-west-2':'US West (Oregon)','ca-central-1':'Canada (Central)','eu-west-1':'Europe (Ireland)','eu-central-1':'Europe (Frankfurt)','eu-west-2':'Europe (London)','eu-west-3':'Europe (Paris)','ap-northeast-1':'Asia Pacific (Tokyo)','ap-northeast-2':'Asia Pacific (Seoul)','ap-southeast-1':'Asia Pacific (Singapore)','ap-southeast-2':'Asia Pacific (Sydney)','ap-south-1':'Asia Pacific (Mumbai)','sa-east-1':'South America (Sao Paulo)','af-south-1':'Africa (Cape Town)','il-central-1':'Israel (Tel Aviv)'};
 const configPrices = {'starter':'25','standard':'45','performance':'85','power':'160'};
 const configNames = {'starter':'Starter - 2 vCPU / 4 GB RAM','standard':'Standard - 2 vCPU / 8 GB RAM','performance':'Performance - 4 vCPU / 16 GB RAM','power':'Power - 8 vCPU / 32 GB RAM'};
-// Gumroad 各套餐独立产品链接
-const configGumroadUrls = {
-  'starter':     'https://workanyspacecom.gumroad.com/l/workanyspace?wanted=true',
-  'standard':    'https://workanyspacecom.gumroad.com/l/laznz?wanted=true',
-  'performance': 'https://workanyspacecom.gumroad.com/l/zekixj?wanted=true',
-  'power':       'https://workanyspacecom.gumroad.com/l/wehlun?wanted=true'
+// Pancake 各套餐独立产品链接
+const configPancakeUrls = {
+  'starter':     'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_4HMazbpKlmtrUbsD2cnWXT?type=subscription&currency=USD',
+  'standard':    'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_6tiHCdAONDakzBSKIButQ9?type=subscription&currency=USD',
+  'performance': 'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_3AAnkHdOhOQXo8l1h38NzJ?type=subscription&currency=USD',
+  'power':       'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_2bw9AH0WtoImjkcBBi5v3k?type=subscription&currency=USD'
 };
 
 fetch('https://checkip.amazonaws.com').then(function(response){return response.text();}).then(function(ip){document.getElementById('ip_address').value=ip.trim();}).catch(function(){document.getElementById('ip_address').value='N/A';});
@@ -394,12 +394,10 @@ function submitForm(){
   .then(function(r){ console.log('Email sent:', r.status); })
   .catch(function(e){ console.warn('Email failed:', e); });
 
-  // 直接跳转到对应套餐的 Gumroad 结账页，预填 email 和 Full name
-  var baseUrl = configGumroadUrls[config];
-  var gumroadUrl = baseUrl
-    + '&email=' + encodeURIComponent(email)
-    + '&' + encodeURIComponent('Full name') + '=' + encodeURIComponent(name);
-  window.location.href = gumroadUrl;
+  // 直接跳转到对应套餐的 Pancake 结账页，预填 email
+  var baseUrl = configPancakeUrls[config];
+  var pancakeUrl = baseUrl + (baseUrl.indexOf('?') > -1 ? '&' : '?') + 'email=' + encodeURIComponent(email);
+  window.location.href = pancakeUrl;
 }
 </script>
 
