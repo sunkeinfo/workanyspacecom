@@ -249,45 +249,75 @@
           <label for="email">✉️ Email Address</label>
           <input type="email" id="email" placeholder="you@example.com" />
         </div>
-        <div class="form-group">
-          <label for="region">🌍 AWS Region</label>
-          <select id="region">
-            <option value="">— Select a Region —</option>
-            <option value="us-east-1">US East (N. Virginia)</option>
-            <option value="us-west-2">US West (Oregon)</option>
-            <option value="ca-central-1">Canada (Central)</option>
-            <option value="eu-west-1">Europe (Ireland)</option>
-            <option value="eu-central-1">Europe (Frankfurt)</option>
-            <option value="eu-west-2">Europe (London)</option>
-            <option value="eu-west-3">Europe (Paris)</option>
-            <option value="ap-northeast-1">Asia Pacific (Tokyo)</option>
-            <option value="ap-northeast-2">Asia Pacific (Seoul)</option>
-            <option value="ap-southeast-1">Asia Pacific (Singapore)</option>
-            <option value="ap-southeast-2">Asia Pacific (Sydney)</option>
-            <option value="ap-south-1">Asia Pacific (Mumbai)</option>
-            <option value="sa-east-1">South America (São Paulo)</option>
-            <option value="af-south-1">Africa (Cape Town)</option>
-            <option value="il-central-1">Israel (Tel Aviv)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="config">⚙️ Desktop Configuration</label>
-          <select id="config">
-            <option value="">— Select Configuration —</option>
-            <option value="starter">Starter — 2 vCPU / 4 GB RAM / 80 GB ($25/mo)</option>
-            <option value="standard">Standard — 2 vCPU / 8 GB RAM / 100 GB ($45/mo)</option>
-            <option value="performance">Performance — 4 vCPU / 16 GB RAM / 175 GB ($85/mo)</option>
-            <option value="power">Power — 8 vCPU / 32 GB RAM / 350 GB ($160/mo)</option>
-          </select>
-        </div>
       </div>
+
+      <!-- Region Selection Buttons -->
+      <div class="form-group" style="margin-top:2rem;">
+        <label>🌍 AWS Region</label>
+        <div class="button-grid" id="region-buttons" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:0.75rem; margin-top:0.75rem;">
+          <button type="button" class="region-btn" data-region="us-east-1">US East (Virginia)</button>
+          <button type="button" class="region-btn" data-region="us-west-2">US West (Oregon)</button>
+          <button type="button" class="region-btn" data-region="ca-central-1">Canada (Central)</button>
+          <button type="button" class="region-btn" data-region="eu-west-1">Europe (Ireland)</button>
+          <button type="button" class="region-btn" data-region="eu-central-1">Europe (Frankfurt)</button>
+          <button type="button" class="region-btn" data-region="eu-west-2">Europe (London)</button>
+          <button type="button" class="region-btn" data-region="eu-west-3">Europe (Paris)</button>
+          <button type="button" class="region-btn" data-region="ap-northeast-1">Asia Tokyo</button>
+          <button type="button" class="region-btn" data-region="ap-northeast-2">Asia Seoul</button>
+          <button type="button" class="region-btn" data-region="ap-southeast-1">Asia Singapore</button>
+          <button type="button" class="region-btn" data-region="ap-southeast-2">Asia Sydney</button>
+          <button type="button" class="region-btn" data-region="ap-south-1">Asia Mumbai</button>
+          <button type="button" class="region-btn" data-region="sa-east-1">South America</button>
+          <button type="button" class="region-btn" data-region="af-south-1">Africa</button>
+          <button type="button" class="region-btn" data-region="il-central-1">Israel (Tel Aviv)</button>
+        </div>
+        <input type="hidden" id="region" value="" />
+      </div>
+
+      <!-- Configuration Selection Buttons -->
+      <div class="form-group" style="margin-top:2rem;">
+        <label>⚙️ Desktop Configuration</label>
+        <div class="button-grid" id="config-buttons" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.75rem; margin-top:0.75rem;">
+          <button type="button" class="config-btn" data-config="starter" data-name="Starter" data-specs="2 vCPU · 4 GB RAM · 80 GB">
+            <div style="font-weight:600;">Starter</div>
+            <div style="font-size:0.85rem; color:#666;">2 vCPU · 4 GB RAM</div>
+            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;">$25/month</div>
+          </button>
+          <button type="button" class="config-btn" data-config="standard" data-name="Standard" data-specs="2 vCPU · 8 GB RAM · 100 GB">
+            <div style="font-weight:600;">Standard</div>
+            <div style="font-size:0.85rem; color:#666;">2 vCPU · 8 GB RAM</div>
+            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;">$45/month</div>
+          </button>
+          <button type="button" class="config-btn" data-config="performance" data-name="Performance" data-specs="4 vCPU · 16 GB RAM · 175 GB">
+            <div style="font-weight:600;">Performance</div>
+            <div style="font-size:0.85rem; color:#666;">4 vCPU · 16 GB RAM</div>
+            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;">$85/month</div>
+          </button>
+          <button type="button" class="config-btn" data-config="power" data-name="Power" data-specs="8 vCPU · 32 GB RAM · 350 GB">
+            <div style="font-weight:600;">Power</div>
+            <div style="font-size:0.85rem; color:#666;">8 vCPU · 32 GB RAM</div>
+            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;">$160/month</div>
+          </button>
+        </div>
+        <input type="hidden" id="config" value="" />
+      </div>
+
+      <!-- Selection Summary -->
+      <div id="selection-summary" style="display:none; background:#F0F9FF; border:1px solid #7DD3FC; border-radius:10px; padding:1rem; margin-top:2rem; font-size:0.9rem; color:#0369A1;">
+        <strong>📋 Your Selection:</strong>
+        <div style="margin-top:0.5rem;">
+          Region: <span id="summary-region" style="font-weight:600;"></span>
+        </div>
+        <div>Plan: <span id="summary-config" style="font-weight:600;"></span> — <span id="summary-price" style="font-weight:600; color:#1D4ED8;"></span>/month</div>
+      </div>
+
       <input type="hidden" id="ip_address" value="" />
       <div style="margin-top:1.5rem;">
         <button class="btn-primary btn-large" onclick="submitForm()" id="submit-btn">
           🚀 Claim My Free 7-Day Trial
         </button>
         <p style="color:#5A6C7D; font-size:0.8rem; margin-top:0.75rem;">
-          🔒 Basic identity verification required &nbsp;·&nbsp; No charge for 7 days
+          ✨ 7-Day Free Trial &nbsp;·&nbsp; 30-Day Money-Back Guarantee
         </p>
       </div>
       <div id="success-msg" style="display:none; margin-top:1rem; background:rgba(0, 184, 148, 0.15); border:2px solid rgba(0, 184, 148, 0.4); border-radius:10px; padding:1rem; color:#00B894; font-size:0.9rem;">
@@ -337,13 +367,88 @@ const configPancakeUrls = {
   'power':       'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_2bw9AH0WtoImjkcBBi5v3k?type=subscription&currency=USD'
 };
 
-fetch('https://checkip.amazonaws.com').then(function(response){return response.text();}).then(function(ip){document.getElementById('ip_address').value=ip.trim();}).catch(function(){document.getElementById('ip_address').value='N/A';});
+// Initialize region buttons
+document.addEventListener('DOMContentLoaded', function(){
+  var regionBtns = document.querySelectorAll('.region-btn');
+  regionBtns.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var region = this.getAttribute('data-region');
+      selectRegion(region);
+    });
+  });
+
+  var configBtns = document.querySelectorAll('.config-btn');
+  configBtns.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var config = this.getAttribute('data-config');
+      selectConfig(config);
+    });
+  });
+
+  fetch('https://checkip.amazonaws.com').then(function(response){return response.text();}).then(function(ip){document.getElementById('ip_address').value=ip.trim();}).catch(function(){document.getElementById('ip_address').value='N/A';});
+});
+
+function selectRegion(region){
+  document.getElementById('region').value = region;
+  
+  // Update button styling
+  var regionBtns = document.querySelectorAll('.region-btn');
+  regionBtns.forEach(function(btn){
+    if(btn.getAttribute('data-region') === region){
+      btn.style.background = '#10B981';
+      btn.style.color = 'white';
+      btn.style.borderColor = '#10B981';
+    } else {
+      btn.style.background = '#ffffff';
+      btn.style.color = '#1A1A2E';
+      btn.style.borderColor = '#d1d5db';
+    }
+  });
+
+  updateSummary();
+}
+
+function selectConfig(config){
+  document.getElementById('config').value = config;
+  
+  // Update button styling
+  var configBtns = document.querySelectorAll('.config-btn');
+  configBtns.forEach(function(btn){
+    if(btn.getAttribute('data-config') === config){
+      btn.style.background = '#10B981';
+      btn.style.color = 'white';
+      btn.style.borderColor = '#10B981';
+    } else {
+      btn.style.background = '#ffffff';
+      btn.style.color = '#1A1A2E';
+      btn.style.borderColor = '#d1d5db';
+    }
+  });
+
+  updateSummary();
+}
+
+function updateSummary(){
+  var region = document.getElementById('region').value;
+  var config = document.getElementById('config').value;
+  
+  if(region && config){
+    document.getElementById('summary-region').textContent = regionNames[region];
+    document.getElementById('summary-config').textContent = configNames[config];
+    document.getElementById('summary-price').textContent = '$' + configPrices[config];
+    document.getElementById('selection-summary').style.display = 'block';
+  } else {
+    document.getElementById('selection-summary').style.display = 'none';
+  }
+}
 
 function selectPlan(plan){
-  document.getElementById('config').value = plan;
+  selectConfig(plan);
   document.location.hash = '#order';
   setTimeout(function(){
-    document.getElementById('config').focus();
+    window.scrollBy(0, 100);
   }, 100);
 }
 
