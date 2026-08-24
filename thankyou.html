@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed – WorkAnySpace</title>
+  <meta name="description" content="Your order has been received and is being processed. Get access to your cloud desktop soon." />
+  <link rel="canonical" href="https://www.workanyspace.com/thankyou.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231D4ED8'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Arial' font-weight='bold' fill='white'>W</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .thankyou-hero {
+      background: linear-gradient(135deg, #E8F4FF, #B3E5FC);
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .checkmark-icon {
+      width: 100px;
+      height: 100px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 56px;
+      animation: bounce 0.6s ease-out;
+    }
+
+    @keyframes bounce {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .thankyou-hero h1 {
+      font-size: clamp(1.9rem, 4vw, 2.9rem);
+    }
+
+    .thankyou-hero p {
+      margin: 0 auto;
+      max-width: 100%;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .status-item {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: left;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .status-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .status-item-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #FF6B35, #FFA502);
+      color: white;
+      border-radius: 12px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .status-item h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .status-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #FFF8E1, #FFFBEB);
+      border: 2px solid #FFA502;
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .highlight-box strong {
+      color: #D97706;
+      font-weight: 700;
+    }
+
+    .timeline-section {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 1.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #FF6B35, #FFA502);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 44px;
+      width: 2px;
+      height: calc(100% + 16px);
+      background: var(--border);
+    }
+
+    .timeline-item-content h4 {
+      font-weight: 700;
+      color: #1A1A2E;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .timeline-item-content p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .email-details {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .email-details ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    .email-details li {
+      padding: 0.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .email-details li::before {
+      content: '✓';
+      color: var(--accent-green);
+      font-weight: 700;
+      margin-right: 0.75rem;
+      margin-top: 0px;
+    }
+
+    .warning-note {
+      background: rgba(255, 165, 2, 0.08);
+      border-left: 4px solid #FFA502;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+    }
+
+    .warning-note strong {
+      color: #D97706;
+      font-weight: 700;
+    }
+
+    .warning-note p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0.5rem 0 0;
+    }
+
+    .help-section {
+      background: linear-gradient(135deg, #E8F4FF, #F0F8FF);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .help-section h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .help-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .help-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .help-links a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .status-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        padding-left: 40px;
+      }
+
+      .timeline-item::before {
+        width: 28px;
+        height: 28px;
+      }
+
+      .help-links {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Work<span>Any</span>Space</a>
+  <ul class="nav-links">
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="security.html">Security</a></li>
+    <li><a href="help.html">Help</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="dashboard.html" class="btn-primary">Go to Dashboard</a>
+  </div>
+</nav>
+
+<!-- THANK YOU HERO -->
+<section class="thankyou-hero">
+  <div class="checkmark-icon">✓</div>
+  <h1>Thank You for Your Order</h1>
+  <p class="section-sub">Your order has been received and is being processed. We're setting up your cloud desktop now.</p>
+</section>
+
+<!-- KEY INFORMATION -->
+<section style="background: var(--bg-white);">
+  <div class="section-inner">
+    <div class="highlight-box">
+      <strong>📋 Order Status:</strong> Your order has been successfully received by our system and is currently being processed. We're preparing your cloud desktop and will have everything ready shortly.
+    </div>
+
+    <div class="status-grid">
+      <div class="status-item">
+        <div class="status-item-number">1</div>
+        <h3>Order Received & Processing</h3>
+        <p>✓ Your order has been successfully submitted to our system</p>
+        <p>✓ Our team is now provisioning your personal cloud desktop on AWS infrastructure</p>
+        <p>✓ Activation typically completes within minutes</p>
+      </div>
+
+      <div class="status-item">
+        <div class="status-item-number">2</div>
+        <h3>Processing Timeline</h3>
+        <p><strong>✓ Automatic Processing:</strong> Most orders are activated automatically within ~15 minutes. No manual action needed!</p>
+        <p style="margin-bottom: 0.5rem; font-size: 0.85rem;"><strong>⚠️ Occasional Reviews:</strong> Some orders trigger security review and require manual verification. Manual review processing occurs at <strong>6:00 PM Eastern Time (3:00 PM Pacific Time)</strong>. If your order requires review, it will be processed during this window or the next business day window.</p>
+        <p style="margin-bottom: 0; font-size: 0.85rem; color: #666;">All times listed are in <strong>US time zones (ET/PT)</strong>. Most customers receive access within 15 minutes. Please check your email (inbox and spam folder) for your activation credentials.</p>
+      </div>
+
+      <div class="status-item">
+        <div class="status-item-number">3</div>
+        <h3>What's Next?</h3>
+        <p>✓ You'll receive setup instructions and access credentials via email</p>
+        <p>✓ Download the WorkAnySpace client or use your web browser</p>
+        <p style="margin-bottom: 0;">✓ Log in and your full cloud desktop is instantly available</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE SECTION -->
+<section style="background: var(--bg-light);">
+  <div class="section-inner">
+    <div class="timeline-section">
+      <div class="section-label">What You'll Receive</div>
+      <h2 class="section-title">Important Emails Coming Your Way</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <h4>📧 Support Email from WorkAnySpace.com</h4>
+            <p>We'll send you helpful setup information and getting-started guides to your registered email address. This includes tips for optimizing your workspace and accessing support resources.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <h4>🔐 AWS Official Channel Email</h4>
+            <p>You'll receive important credentials and setup information from Amazon Web Services (AWS). This email contains:</p>
+            <div class="email-details">
+              <ul>
+                <li><strong>Login Key</strong> — Secure credentials to access your workspace</li>
+                <li><strong>Password Reset Link</strong> — Set up or change your account password</li>
+                <li><strong>Client Download Address</strong> — Install the WorkSpaces client on your devices</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <h4>✅ You're Ready to Connect</h4>
+            <p>Use the credentials from the AWS email to log in. Your full Windows desktop is instantly available from any device — phone, tablet, laptop, or web browser.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning-note">
+        <strong>💡 Check Your Inbox & Spam:</strong>
+        <p>Important emails may arrive in your primary inbox or spam/junk folder. Check both locations to ensure you don't miss any setup instructions or credentials.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HELP SECTION -->
+<section style="background: var(--bg-white);">
+  <div class="section-inner">
+    <div class="help-section">
+      <h3>Need Help?</h3>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">If you have any questions or concerns about your order, our support team is here to help.</p>
+      <div class="help-links">
+        <a href="help.html">📚 Help Center</a>
+        <a href="security.html">🔒 Security Guide</a>
+        <a href="about.html">ℹ️ About WorkAnySpace</a>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.85rem;">Or email us at <strong>support@workanyspace.com</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section style="background: var(--bg-light); text-align: center;">
+  <div class="section-inner">
+    <h2 class="section-title">Your Cloud Desktop Awaits</h2>
+    <p class="section-sub" style="margin: 0 auto 2rem;">In the meantime, learn more about WorkAnySpace and how to get the most out of your cloud desktop.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="help.html" class="btn-primary btn-large">View Getting Started Guide</a>
+      <a href="solutions.html" class="btn-outline btn-large">See Use Cases</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Work<span>Any</span>Space</a>
+      <p>Your personal cloud desktop, powered by Amazon WorkSpaces. Work securely from anywhere in the world.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="pricing.html">Pricing & Plans</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="downloads.html">Downloads</a></li>
+        <li><a href="security.html">Security</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="help.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 WorkAnySpace.com — Powered by Amazon Web Services</span>
+    <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
