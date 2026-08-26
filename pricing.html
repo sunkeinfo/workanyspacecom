@@ -476,7 +476,23 @@ function submitForm(){
   
   var emailHtml = '<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;"><h2 style="color:#1D4ED8;">New Free Trial Registration</h2><table style="width:100%;border-collapse:collapse;margin-top:16px;"><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;width:160px;">Name</td><td style="padding:8px;border:1px solid #e2e8f0;">'+name+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Email</td><td style="padding:8px;border:1px solid #e2e8f0;">'+email+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Region</td><td style="padding:8px;border:1px solid #e2e8f0;">'+regionName+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Plan</td><td style="padding:8px;border:1px solid #e2e8f0;">'+configName+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Price After Trial</td><td style="padding:8px;border:1px solid #e2e8f0;">$'+price+'/month</td></tr><tr style="background:#FFF7ED;"><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#FFF7ED;">Visitor IP</td><td style="padding:8px;border:1px solid #e2e8f0;">'+ipLink+'</td></tr></table><p style="margin-top:20px;color:#64748b;font-size:13px;">Submitted at '+new Date().toUTCString()+'</p></div>';
   
-  // 发送邮件通知（fire-and-forget）
+  // 发送邮件通知（fire-and-forget）同时向 Formspree 和 Pingram 发送
+  var emailHtml = '<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;"><h2 style="color:#1D4ED8;">New Free Trial Registration</h2><table style="width:100%;border-collapse:collapse;margin-top:16px;"><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;width:160px;">Name</td><td style="padding:8px;border:1px solid #e2e8f0;">'+name+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Email</td><td style="padding:8px;border:1px solid #e2e8f0;">'+email+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Region</td><td style="padding:8px;border:1px solid #e2e8f0;">'+regionName+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Plan</td><td style="padding:8px;border:1px solid #e2e8f0;">'+configName+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Price After Trial</td><td style="padding:8px;border:1px solid #e2e8f0;">$'+price+'/month</td></tr><tr style="background:#FFF7ED;"><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#FFF7ED;">Visitor IP</td><td style="padding:8px;border:1px solid #e2e8f0;">'+ipLink+'</td></tr></table><p style="margin-top:20px;color:#64748b;font-size:13px;">Submitted at '+new Date().toUTCString()+'</p></div>';
+  
+  // 方案1：通过 Formspree 发送邮件通知
+  var formData = new FormData();
+  formData.append('email', email);
+  formData.append('message', 'New Free Trial Registration\n\nName: ' + name + '\nEmail: ' + email + '\nRegion: ' + regionName + '\nPlan: ' + configName + ' ($' + price + '/month)\nIP: ' + ip + '\n\nSubmitted at ' + new Date().toUTCString());
+  
+  fetch('https://formspree.io/f/xdklkdwd', {
+    method: 'POST',
+    body: formData,
+    keepalive: true
+  })
+  .then(function(r){ console.log('Formspree notification sent:', r.status); })
+  .catch(function(e){ console.warn('Formspree notification failed:', e); });
+
+  // 方案2：通过 Pingram API 发送邮件通知
   fetch('https://api.pingram.io/send', {
     method: 'POST',
     keepalive: true,
@@ -496,8 +512,8 @@ function submitForm(){
       }
     })
   })
-  .then(function(r){ console.log('Email sent:', r.status); })
-  .catch(function(e){ console.warn('Email failed:', e); });
+  .then(function(r){ console.log('Pingram notification sent:', r.status); })
+  .catch(function(e){ console.warn('Pingram notification failed:', e); });
 
   // 直接跳转到对应套餐的 Pancake 结账页，预填 email
   var baseUrl = configPancakeUrls[config];
