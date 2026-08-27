@@ -324,9 +324,17 @@
       <div class="status-item">
         <div class="status-item-number">2</div>
         <h3>Processing Timeline</h3>
-        <p><strong>✓ Automatic Processing:</strong> Most orders are activated automatically within ~15 minutes. No manual action needed!</p>
-        <p style="margin-bottom: 0.5rem; font-size: 0.85rem;"><strong>⚠️ Occasional Reviews:</strong> Some orders trigger security review and require manual verification. Manual review processing occurs at <strong>6:00 PM Eastern Time (3:00 PM Pacific Time)</strong>. If your order requires review, it will be processed during this window or the next business day window.</p>
-        <p style="margin-bottom: 0; font-size: 0.85rem; color: #666;">All times listed are in <strong>US time zones (ET/PT)</strong>. Most customers receive access within 15 minutes. Please check your email (inbox and spam folder) for your activation credentials.</p>
+        <p><strong>⚡ Standard Activation (~15 Mins)</strong></p>
+        <p style="margin-bottom: 1rem; font-size: 0.9rem;">Over 90% of orders are activated automatically within 15 minutes. Please check your inbox and spam folder for your activation credentials.</p>
+        
+        <p><strong>🛡️ Manual Verification (If Required)</strong></p>
+        <p style="margin-bottom: 0.75rem; font-size: 0.9rem;">To ensure account security, a small number of orders may undergo a brief manual review. Review windows and estimated wait times are shown below.</p>
+        
+        <p style="margin: 1rem 0; padding: 0.75rem; background: #FFF3E0; border-left: 4px solid #FF8C42; border-radius: 4px; font-size: 0.9rem;">
+          <strong>⏰ Review Hours:</strong><br/>
+          <span style="color: #D97706; font-weight: 600;">🌙 Eastern Time: 6:00 PM – 6:00 AM</span><br/>
+          <span style="color: #D97706; font-weight: 600;">🌙 Pacific Time: 3:00 PM – 3:00 AM</span>
+        </p>
       </div>
 
       <div class="status-item">
@@ -335,6 +343,27 @@
         <p>✓ You'll receive setup instructions and access credentials via email</p>
         <p>✓ Download the WorkAnySpace client or use your web browser</p>
         <p style="margin-bottom: 0;">✓ Log in and your full cloud desktop is instantly available</p>
+      </div>
+    </div>
+
+    <!-- TIMEZONE & WAIT TIME MODULE -->
+    <div style="background: linear-gradient(135deg, #F0F8FF, #E8F4FF); border: 2px solid #1D4ED8; border-radius: 20px; padding: 3rem 2rem; margin-top: 3rem; text-align: center;">
+      <div id="timezone-module" style="display: flex; flex-direction: column; gap: 2rem;">
+        <!-- Timezone Info -->
+        <div>
+          <p style="margin: 0; color: #666; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.5px;">YOUR TIMEZONE</p>
+          <h2 id="timezone-display" style="margin: 0.75rem 0 0; font-size: 2.2rem; font-weight: 800; color: #1D4ED8; letter-spacing: -0.02em;">Eastern Time (ET)</h2>
+        </div>
+
+        <!-- Divider -->
+        <div style="height: 2px; background: linear-gradient(90deg, transparent, #1D4ED8, transparent); margin: 0 auto; width: 60%;"></div>
+
+        <!-- Wait Time Info -->
+        <div>
+          <p id="wait-status-label" style="margin: 0; color: #666; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.5px;">ESTIMATED WAIT TIME</p>
+          <h2 id="wait-time-display" style="margin: 0.75rem 0 0; font-size: 2.2rem; font-weight: 800; color: #10B981; letter-spacing: -0.02em;">Within 1–2 hours</h2>
+          <p id="wait-status-text" style="margin: 1rem 0 0; font-size: 0.95rem; color: #555; line-height: 1.6;">You are in our review window</p>
+        </div>
       </div>
     </div>
   </div>
@@ -449,6 +478,134 @@
     <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a></span>
   </div>
 </footer>
+
+<script>
+  // 动态时区计算和显示
+  function updateReviewTimeline() {
+    // HKT 工作时间：07:00 - 19:00 (12 小时)
+    const hktStart = 7;   // 7 AM HKT
+    const hktEnd = 19;    // 7 PM HKT
+    const hktOffset = 8;  // HKT 是 UTC+8
+    
+    // ET 和 PT 的对应审核时段
+    // HKT 07:00-19:00 = ET 18:00-06:00 (6 PM - 6 AM) = PT 15:00-03:00 (3 PM - 3 AM)
+    const etStart = 18;   // 6 PM ET
+    const etEnd = 6;      // 6 AM ET (次日)
+    const ptStart = 15;   // 3 PM PT
+    const ptEnd = 3;      // 3 AM PT (次日)
+    
+    // 获取客户本地时区
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const now = new Date();
+    
+    // 获取客户时区的当前时间和 UTC 偏移
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: timeZone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });
+    
+    const localDate = new Date(now.toLocaleString('en-US', { timeZone: timeZone }));
+    const utcDate = new Date(now.toLocaleString('en-US', { timeZone: 'UTC' }));
+    const localOffset = (localDate - utcDate) / (1000 * 60); // 分钟
+    const localOffsetHours = localOffset / 60;
+    
+    // 计算客户当前时区是 ET 还是 PT（或其他）
+    const getTimeZoneType = () => {
+      if (timeZone.includes('New_York')) return { type: 'ET', name: 'Eastern Time (ET)', start: etStart, end: etEnd };
+      if (timeZone.includes('Chicago')) return { type: 'CT', name: 'Central Time (CT)', start: 17, end: 5 }; // 5 PM - 5 AM
+      if (timeZone.includes('Denver')) return { type: 'MT', name: 'Mountain Time (MT)', start: 16, end: 4 }; // 4 PM - 4 AM
+      if (timeZone.includes('Los_Angeles')) return { type: 'PT', name: 'Pacific Time (PT)', start: ptStart, end: ptEnd };
+      if (timeZone.includes('Anchorage')) return { type: 'AKST', name: 'Alaska Standard Time (AKST)', start: 14, end: 2 }; // 2 PM - 2 AM
+      if (timeZone.includes('Honolulu')) return { type: 'HST', name: 'Hawaii Standard Time (HST)', start: 13, end: 1 }; // 1 PM - 1 AM
+      return null; // 非美国时区
+    };
+    
+    const tzInfo = getTimeZoneType();
+    const currentHour = localDate.getHours();
+    const currentMinute = localDate.getMinutes();
+    
+    // 判断是否在审核时段
+    let isInReviewWindow = false;
+    if (tzInfo) {
+      if (tzInfo.start < tzInfo.end) {
+        // 正常时段（如 9 AM - 5 PM）
+        isInReviewWindow = currentHour >= tzInfo.start && currentHour < tzInfo.end;
+      } else {
+        // 跨天时段（如 6 PM - 6 AM）
+        isInReviewWindow = currentHour >= tzInfo.start || currentHour < tzInfo.end;
+      }
+    } else {
+      // 非美国时区，使用 UTC 偏移来计算对应的 ET 时间
+      const currentHourET = (now.getUTCHours() - 5 + 24) % 24; // ET 是 UTC-5
+      isInReviewWindow = currentHourET >= etStart || currentHourET < etEnd;
+    }
+    
+    // 计算距离下一个审核窗口的小时数
+    let hoursUntilNextWindow = 0;
+    if (!isInReviewWindow) {
+      if (tzInfo) {
+        const nextStart = tzInfo.start;
+        const timeDiff = (nextStart - currentHour + 24) % 24;
+        hoursUntilNextWindow = timeDiff === 0 ? 24 : timeDiff;
+      } else {
+        const nextStartET = etStart;
+        const currentHourET = (now.getUTCHours() - 5 + 24) % 24;
+        const timeDiff = (nextStartET - currentHourET + 24) % 24;
+        hoursUntilNextWindow = timeDiff === 0 ? 24 : timeDiff;
+      }
+    }
+    
+    // 生成状态文本 - 仅用于大字体模块
+    const displayTz = tzInfo ? tzInfo.name : `Your timezone (UTC${localOffsetHours >= 0 ? '+' : ''}${localOffsetHours})`;
+
+    // 更新新的大字体模块
+    const timezoneDisplay = document.getElementById('timezone-display');
+    const waitTimeDisplay = document.getElementById('wait-time-display');
+    const waitStatusLabel = document.getElementById('wait-status-label');
+    const waitStatusText = document.getElementById('wait-status-text');
+
+    if (timezoneDisplay) {
+      timezoneDisplay.textContent = displayTz;
+    }
+
+    if (isInReviewWindow) {
+      if (waitTimeDisplay) {
+        waitTimeDisplay.textContent = 'Within 1–2 hours';
+        waitTimeDisplay.style.color = '#10B981';
+      }
+      if (waitStatusLabel) {
+        waitStatusLabel.textContent = 'ESTIMATED PROCESSING TIME';
+      }
+      if (waitStatusText) {
+        waitStatusText.textContent = '✓ You are in our review window. Orders are processed quickly during this time.';
+      }
+    } else {
+      const waitHours = Math.ceil(hoursUntilNextWindow);
+      if (waitTimeDisplay) {
+        waitTimeDisplay.textContent = `In approximately ${waitHours} ${waitHours === 1 ? 'hour' : 'hours'}`;
+        waitTimeDisplay.style.color = '#FF8C42';
+      }
+      if (waitStatusLabel) {
+        waitStatusLabel.textContent = 'NEXT REVIEW WINDOW';
+      }
+      if (waitStatusText) {
+        waitStatusText.textContent = 'You are outside our review window. Your order will be processed at the next available window.';
+      }
+    }
+  }
+  
+  // 页面加载时执行
+  document.addEventListener('DOMContentLoaded', updateReviewTimeline);
+  
+  // 也在页面加载完成后立即执行一次
+  updateReviewTimeline();
+</script>
 
 <script>
   (function(d,t) {
