@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Payment — AWSDO.COM</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SPVFYB1VT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0SPVFYB1VT');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f4f7fa 100%);
+            color: #1e293b;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+        }
+        header {
+            background: #ffffff;
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        header .header-inner {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            justify-content: space-between;
+        }
+        header .logo { flex-shrink: 0; }
+        header .logo img { height: 44px; width: auto; display: block; }
+        nav ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
+        }
+        nav ul li { display: inline; margin: 0 10px; }
+        nav a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+        nav a:hover, nav a.active { color: #007bff; }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            background: linear-gradient(135deg, #0a1628 0%, #0d2a5e 50%, #0056b3 100%);
+            color: #ffffff;
+            padding: 64px 0 96px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(0,123,255,0.18) 0%, transparent 60%);
+            animation: pulse-bg 6s ease-in-out infinite alternate;
+        }
+        @keyframes pulse-bg {
+            from { transform: scale(1); opacity: 0.6; }
+            to   { transform: scale(1.1); opacity: 1; }
+        }
+        .hero .container { position: relative; z-index: 1; }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #7dd3fc;
+            background: rgba(125, 211, 252, 0.12);
+            border: 1px solid rgba(125, 211, 252, 0.28);
+            border-radius: 999px;
+            padding: 6px 16px;
+            margin-bottom: 22px;
+        }
+        .hero h1 {
+            font-size: 44px;
+            margin: 0 0 14px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+        }
+        .hero h1 .highlight { color: #26e0a3; }
+        .hero .hero-sub {
+            font-size: 17px;
+            color: #cbd5e1;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* ---------- Hero: active payment state ---------- */
+        .hero-paying { display: none; }
+
+        .pay-headline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3em;
+            white-space: nowrap;
+            font-size: clamp(17px, 2.55vw, 38px);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+        .live-dot {
+            width: 0.3em;
+            height: 0.3em;
+            border-radius: 50%;
+            background: #26e0a3;
+            box-shadow: 0 0 0 0.12em rgba(38, 224, 163, 0.25);
+            animation: live-pulse 1.8s ease-in-out infinite;
+            flex-shrink: 0;
+            margin-right: 0.14em;
+        }
+        @keyframes live-pulse {
+            0%, 100% { opacity: 1;   transform: scale(1); }
+            50%      { opacity: 0.5; transform: scale(0.8); }
+        }
+        .ph-label { color: #7dd3fc; }
+        .ph-sep { color: rgba(255,255,255,0.35); }
+        .ph-email { color: #ffffff; }
+        .ph-verb { color: #a9c2dd; }
+        .ph-amount { color: #26e0a3; }
+
+        /* ---------- Countdown (USDT panel only) ---------- */
+        .countdown-bar {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            min-height: 67px;
+            margin-bottom: 24px;
+        }
+        .countdown-bar.is-active { display: flex; }
+
+        .countdown-label {
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #64748b;
+            line-height: 1.4;
+            max-width: 160px;
+        }
+        .countdown-digits {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+        }
+        .cd-seg {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1;
+            color: #ffffff;
+            background: linear-gradient(135deg, #0d2a5e 0%, #0056b3 100%);
+            border-radius: 11px;
+            padding: 10px 14px;
+            min-width: 62px;
+            text-align: center;
+            box-shadow: 0 5px 14px rgba(0, 86, 179, 0.28);
+            font-variant-numeric: tabular-nums;
+        }
+        .cd-colon {
+            font-size: 24px;
+            font-weight: 700;
+            color: #94a3b8;
+            animation: colon-blink 1s step-end infinite;
+        }
+        @keyframes colon-blink {
+            50% { opacity: 0.25; }
+        }
+        .countdown-digits.urgent .cd-seg {
+            background: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%);
+            box-shadow: 0 5px 14px rgba(239, 68, 68, 0.32);
+        }
+        .countdown-expired {
+            display: none;
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #b91c1c;
+            line-height: 1.5;
+        }
+        .countdown-expired small {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        /* ---------- Payment card ---------- */
+        .pay-section { padding: 0 0 90px; }
+        .pay-card {
+            max-width: 1060px;
+            margin: -56px auto 0;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 26px 60px rgba(15, 23, 42, 0.14);
+            padding: 36px 44px 44px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ---------- Method selector ---------- */
+        .method-tabs {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+        .method-tab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-align: left;
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: 2px solid #e9edf3;
+            background: #fbfcfe;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            min-width: 0;
+        }
+        .method-tab:hover {
+            border-color: #b9cbe6;
+            background: #f6f9ff;
+        }
+        .method-tab.active {
+            border-color: #0056b3;
+            background: #ffffff;
+            box-shadow: 0 8px 22px rgba(0, 86, 179, 0.14);
+        }
+        .method-icon {
+            font-size: 26px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .method-text { min-width: 0; }
+        .method-name {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: #0d2a5e;
+            letter-spacing: -0.01em;
+        }
+        .method-note {
+            font-size: 12.5px;
+            font-weight: 500;
+            color: #94a3b8;
+            line-height: 1.45;
+        }
+        .method-tab.active .method-note { color: #0056b3; }
+
+        .method-panel { display: none; }
+        .method-panel.active { display: block; }
+
+        .pay-split {
+            display: flex;
+            gap: 44px;
+            align-items: stretch;
+        }
+        .pay-col-left {
+            flex: 0 0 auto;
+            width: 396px;
+            text-align: center;
+        }
+        .pay-col-right {
+            flex: 1;
+            min-width: 0;
+            border-left: 1px solid #eef2f7;
+            padding-left: 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* ---------- USDT: network tabs + QR ---------- */
+        .network-tabs {
+            display: flex;
+            gap: 6px;
+            background: #f1f5f9;
+            border-radius: 14px;
+            padding: 6px;
+            margin-bottom: 24px;
+        }
+        .network-tab {
+            flex: 1;
+            text-align: center;
+            padding: 11px 6px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #475569;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .network-tab:hover { color: #0d2a5e; }
+        .network-tab.active {
+            background: #ffffff;
+            color: #0d2a5e;
+            box-shadow: 0 3px 8px rgba(15, 23, 42, 0.14);
+        }
+        .network-tab .tab-note {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 500;
+            color: #94a3b8;
+            margin-top: 3px;
+        }
+        .network-tab.active .tab-note { color: #0056b3; }
+
+        .qr-panel { display: none; }
+        .qr-panel.active { display: block; }
+
+        .qr-shell {
+            display: inline-block;
+            padding: 3px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #26e0a3 0%, #0891b2 45%, #0056b3 100%);
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.16);
+        }
+        .qr-frame {
+            width: 356px;
+            max-width: 100%;
+            border-radius: 19px;
+            overflow: hidden;
+            background: #fff;
+            padding: 10px;
+        }
+        .qr-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .network-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #047857;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 8px 18px;
+            border-radius: 999px;
+            margin-top: 20px;
+        }
+        .scan-hint {
+            margin: 14px 0 0;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* ---------- Instructions ---------- */
+        .steps h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0d2a5e;
+            letter-spacing: -0.02em;
+            margin: 0 0 24px;
+        }
+        .steps ol {
+            list-style: none;
+            counter-reset: step;
+            margin: 0;
+            padding: 0;
+        }
+        .steps ol li {
+            counter-increment: step;
+            position: relative;
+            padding-left: 46px;
+            margin-bottom: 22px;
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+        .steps ol li:last-child { margin-bottom: 0; }
+        .steps ol li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 1px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0d2a5e 0%, #0056b3 100%);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(0, 86, 179, 0.28);
+        }
+        .steps ol li strong { color: #1e293b; font-weight: 700; }
+
+        /* ---------- Amazon gift card panel ---------- */
+        .gift-buy {
+            background: linear-gradient(160deg, #fff8ec 0%, #fff4e0 100%);
+            border: 1px solid #ffdca8;
+            border-radius: 18px;
+            padding: 28px 24px;
+            text-align: center;
+        }
+        .gift-amount-label {
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #b4770f;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .gift-amount {
+            font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+            font-size: 42px;
+            font-weight: 700;
+            color: #0d2a5e;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        .gift-amount-hint {
+            font-size: 12.5px;
+            color: #8a6d3b;
+            margin: 6px 0 22px;
+        }
+        .amazon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            width: 100%;
+            background: linear-gradient(135deg, #ff9900 0%, #f08804 100%);
+            color: #10202e;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 15.5px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 22px rgba(255, 153, 0, 0.34);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .amazon-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 153, 0, 0.44);
+        }
+        .gift-tips {
+            list-style: none;
+            margin: 24px 0 0;
+            padding: 0;
+            text-align: left;
+        }
+        .gift-tips li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 13px;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #6b5426;
+        }
+        .gift-tips li:last-child { margin-bottom: 0; }
+        .gift-tips li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #16a34a;
+            font-weight: 800;
+        }
+        .gift-tips strong { color: #4a3812; font-weight: 700; }
+
+        .code-form { margin-top: 28px; }
+        .code-form label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        .code-form input[type="text"] {
+            width: 100%;
+            font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 15px 14px;
+            border: 2px solid #dbe3ec;
+            border-radius: 12px;
+            background: #fbfcfe;
+            color: #0d2a5e;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .code-form input[type="text"]:focus {
+            outline: none;
+            border-color: #0056b3;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1);
+        }
+        .code-form input[type="text"]::placeholder {
+            color: #b8c4d4;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+        .code-hint {
+            font-size: 12.5px;
+            color: #94a3b8;
+            margin: 8px 0 0;
+        }
+        .redeem-btn {
+            width: 100%;
+            margin-top: 18px;
+            background: linear-gradient(135deg, #0d2a5e 0%, #0056b3 100%);
+            color: #ffffff;
+            border: none;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 800;
+            padding: 16px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(0, 86, 179, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+        }
+        .redeem-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 86, 179, 0.4);
+        }
+        .redeem-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        #redeemStatus {
+            display: none;
+            margin-top: 16px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+        #redeemStatus a { color: inherit; }
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        footer {
+            background: #0a1628;
+            color: #94a3b8;
+            padding: 28px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+        footer p { margin: 0; }
+        footer a { color: #cbd5e1; text-decoration: none; }
+        footer a:hover { color: #ffffff; text-decoration: underline; }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 940px) {
+            .pay-card { padding: 30px 34px 34px; }
+            .pay-split { flex-direction: column; gap: 34px; align-items: stretch; }
+            .pay-col-left { width: 100%; }
+            .pay-col-right {
+                border-left: none;
+                border-top: 1px solid #eef2f7;
+                padding-left: 0;
+                padding-top: 32px;
+            }
+            .method-tabs { flex-direction: column; gap: 10px; }
+        }
+        @media (max-width: 760px) {
+            .pay-headline {
+                flex-wrap: wrap;
+                white-space: normal;
+                font-size: 26px;
+                gap: 0.2em 0.32em;
+            }
+            .pay-headline .ph-label { flex-basis: 100%; }
+            .pay-headline .ph-sep { display: none; }
+            .ph-email { overflow-wrap: anywhere; word-break: break-word; min-width: 0; }
+        }
+        @media (max-width: 620px) {
+            header .header-inner { flex-direction: column; gap: 12px; }
+            nav ul { justify-content: center; }
+            nav ul li { margin: 0 7px; }
+            nav a { font-size: 13.5px; }
+
+            .hero { padding: 48px 0 90px; }
+            .hero h1 { font-size: 30px; }
+            .pay-headline { font-size: 22px; }
+            .cd-seg { font-size: 26px; min-width: 54px; padding: 9px 11px; }
+            .countdown-bar { min-height: 0; gap: 12px; }
+            .countdown-label { font-size: 11px; max-width: 130px; }
+            .pay-card { margin: -50px auto 0; padding: 22px 20px 26px; border-radius: 18px; }
+            .qr-frame { width: 100%; }
+            .network-tab { font-size: 12.5px; padding: 10px 4px; }
+            .steps h3 { font-size: 19px; }
+            .gift-amount { font-size: 34px; }
+            .code-form input[type="text"] { font-size: 16px; letter-spacing: 0.03em; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Work<span>Any</span>Space</a>
+  <ul class="nav-links">
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="security.html">Security</a></li>
+    <li><a href="help.html">Help</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="pricing.html" class="btn-primary">Get Started</a>
+  </div>
+</nav>
+
+    <section class="hero">
+        <div class="container">
+
+            <!-- Default state: no email/amount passed in the URL -->
+            <div id="heroDefault">
+                <span class="eyebrow">Checkout</span>
+                <h1>Complete Your <span class="highlight">Payment</span></h1>
+                <p class="hero-sub">Choose the payment method that works best for you — pay with USDT, or activate instantly with an Amazon eGift Card.</p>
+            </div>
+
+            <!-- Active state: ?email= &amount= supplied by the referring page -->
+            <div id="heroPaying" class="hero-paying">
+                <div class="pay-headline">
+                    <span class="live-dot"></span>
+                    <span class="ph-sep">·</span>
+                    <span class="ph-email" id="payEmail"></span>
+                    <span class="ph-verb">is paying</span>
+                    <span class="ph-amount"><span id="payAmount"></span><span class="cur">USD</span></span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="pay-section">
+        <div class="container">
+            <div class="pay-card">
+
+                <!-- ===== Payment method selector ===== -->
+                <div class="method-tabs" id="methodTabs" role="tablist" aria-label="Payment method">
+                    <button type="button" class="method-tab active" data-method="usdt" role="tab" aria-selected="true">
+                        <span class="method-icon">💎</span>
+                        <span class="method-text">
+                            <span class="method-name">Pay with USDT</span>
+                            <span class="method-note">TRC20 · BEP20 · ERC20 · instant</span>
+                        </span>
+                    </button>
+                    <button type="button" class="method-tab" data-method="giftcard" role="tab" aria-selected="false">
+                        <span class="method-icon">🎁</span>
+                        <span class="method-text">
+                            <span class="method-name">Amazon Gift Card</span>
+                            <span class="method-note">Pay by card via Amazon eGift Card</span>
+                        </span>
+                    </button>
+                </div>
+
+                <!-- ===== Method 1: USDT ===== -->
+                <div class="method-panel active" data-method="usdt" role="tabpanel">
+                    <div class="pay-split">
+
+                        <div class="pay-col-left">
+                            <div class="network-tabs" id="networkTabs">
+                                <button type="button" class="network-tab active" data-network="trx">
+                                    TRC20
+                                    <span class="tab-note">Tron · Low Fee</span>
+                                </button>
+                                <button type="button" class="network-tab" data-network="bsc">
+                                    BEP20
+                                    <span class="tab-note">BNB Smart Chain</span>
+                                </button>
+                                <button type="button" class="network-tab" data-network="eth">
+                                    ERC20
+                                    <span class="tab-note">Ethereum</span>
+                                </button>
+                            </div>
+
+                            <!-- TRC20 / TRON -->
+                            <div class="qr-panel active" data-network="trx">
+                                <div class="qr-shell">
+                                    <div class="qr-frame">
+                                        <img src="usdt-binance/trx-usdt-binance.jpeg" alt="USDT TRC20 payment QR code">
+                                    </div>
+                                </div>
+                                <div><span class="network-badge">🟢 USDT · TRC20 (TRON)</span></div>
+                            </div>
+
+                            <!-- BEP20 / BSC -->
+                            <div class="qr-panel" data-network="bsc">
+                                <div class="qr-shell">
+                                    <div class="qr-frame">
+                                        <img src="usdt-binance/bsc-usdt-binance.jpeg" alt="USDT BEP20 payment QR code">
+                                    </div>
+                                </div>
+                                <div><span class="network-badge">🟡 USDT · BEP20 (BNB Smart Chain)</span></div>
+                            </div>
+
+                            <!-- ERC20 / ETH -->
+                            <div class="qr-panel" data-network="eth">
+                                <div class="qr-shell">
+                                    <div class="qr-frame">
+                                        <img src="usdt-binance/eth-usdt-binance.jpeg" alt="USDT ERC20 payment QR code">
+                                    </div>
+                                </div>
+                                <div><span class="network-badge">🔵 USDT · ERC20 (Ethereum)</span></div>
+                            </div>
+
+                            <p class="scan-hint">Open your wallet app and scan the code above</p>
+                        </div>
+
+                        <div class="pay-col-right">
+                            <!-- Shown by JS only when ?email= &amount= are supplied -->
+                            <div class="countdown-bar" id="countdownBar">
+                                <span class="countdown-label">Complete your payment within</span>
+                                <div class="countdown-digits" id="countdownDigits">
+                                    <span class="cd-seg" id="cdMinutes">10</span>
+                                    <span class="cd-colon">:</span>
+                                    <span class="cd-seg" id="cdSeconds">00</span>
+                                </div>
+                                <div class="countdown-expired" id="countdownExpired">
+                                    Payment window expired
+                                    <small>Refresh the page or contact support to start a new payment.</small>
+                                </div>
+                            </div>
+
+                            <div class="steps">
+                                <h3>How to pay with USDT</h3>
+                                <ol>
+                                    <li>Select the correct network on the left — it <strong>must match</strong> the network your wallet sends on.</li>
+                                    <li>Open your Binance app or wallet and choose <strong>Send / Withdraw USDT</strong>.</li>
+                                    <li>Scan the QR code, or copy the wallet address into your wallet manually.</li>
+                                    <li>Enter the exact amount shown above and confirm the transaction.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ===== Method 2: Amazon eGift Card ===== -->
+                <div class="method-panel" data-method="giftcard" role="tabpanel">
+                    <div class="pay-split">
+
+                        <div class="pay-col-left">
+                            <div class="gift-buy">
+                                <span class="gift-amount-label">Gift card amount</span>
+                                <div class="gift-amount">$<span id="giftAmount">—</span></div>
+                                <p class="gift-amount-hint">Enter this exact amount on Amazon</p>
+
+                                <a class="amazon-btn" href="https://www.amazon.com/dp/B07PCMWTSG" target="_blank" rel="noopener noreferrer">
+                                    🛒 Buy an Amazon eGift Card
+                                </a>
+
+                                <ul class="gift-tips">
+                                    <li>Choose the <strong>eGift Card</strong> product and set delivery to <strong>Email</strong> — the claim code arrives in 5–10 minutes.</li>
+                                    <li>Set <strong>Recipient Email to your own address</strong>, not ours, so you can track the order and see the code yourself.</li>
+                                    <li>Amazon accepts any custom amount from <strong>$1.00 to $2,000.00</strong> — enter your exact plan amount.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pay-col-right">
+                            <div class="steps">
+                                <h3>Activate with a gift card</h3>
+                                <ol>
+                                    <li>Click <strong>Buy an Amazon eGift Card</strong> and select the <strong>Email</strong> delivery option.</li>
+                                    <li>Enter your plan amount (e.g. <strong>$25.00</strong>) and set the recipient email to <strong>your own address</strong>, then complete the purchase.</li>
+                                    <li>Open your inbox and copy the claim code — 14–15 characters, in the form <strong>AQXX-XXXXXX-XXXX</strong>.</li>
+                                    <li>Paste the claim code below and click <strong>Redeem &amp; Activate Now</strong>.</li>
+                                </ol>
+                            </div>
+
+                            <form class="code-form" id="giftForm" novalidate>
+                                <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+
+                                <label for="claimCode">Amazon claim code</label>
+                                <input type="text"
+                                       id="claimCode"
+                                       name="claimCode"
+                                       placeholder="AQXX-XXXXXX-XXXX"
+                                       autocomplete="off"
+                                       spellcheck="false"
+                                       maxlength="19"
+                                       required>
+                                <p class="code-hint">Copy the code exactly as it appears in the Amazon email. Dashes are added automatically.</p>
+
+                                <button type="submit" class="redeem-btn" id="redeemBtn">⚡ Redeem &amp; Activate Now</button>
+                                <p id="redeemStatus" role="status" aria-live="polite"></p>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Work<span>Any</span>Space</a>
+      <p>Your personal cloud desktop, powered by Amazon WorkSpaces. Work securely from anywhere in the world.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="pricing.html">Pricing & Plans</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="downloads.html">Downloads</a></li>
+        <li><a href="security.html">Security</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="help.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 WorkAnySpace.com — Powered by Amazon Web Services</span>
+    <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+    <!-- ===== Payment method switching ===== -->
+    <script>
+        (function () {
+            var methodTabs = document.querySelectorAll('.method-tab');
+            var methodPanels = document.querySelectorAll('.method-panel');
+
+            methodTabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var method = tab.dataset.method;
+                    methodTabs.forEach(function (t) {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    methodPanels.forEach(function (p) { p.classList.remove('active'); });
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
+                    document.querySelector('.method-panel[data-method="' + method + '"]').classList.add('active');
+                });
+            });
+        })();
+    </script>
+
+    <!-- ===== USDT network switching ===== -->
+    <script>
+        (function () {
+            var tabs = document.querySelectorAll('.network-tab');
+            var panels = document.querySelectorAll('.qr-panel');
+
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var network = tab.dataset.network;
+                    tabs.forEach(function (t) { t.classList.remove('active'); });
+                    panels.forEach(function (p) { p.classList.remove('active'); });
+                    tab.classList.add('active');
+                    document.querySelector('.qr-panel[data-network="' + network + '"]').classList.add('active');
+                });
+            });
+        })();
+    </script>
+
+    <!-- ===== Order context: reads ?email= &amount= (and optional ?method=) from the URL ===== -->
+    <script>
+        var ORDER = { email: '', amount: '', plan: '', location: '', os: '' };
+
+        (function () {
+            var urlParams = new URLSearchParams(window.location.search);
+            var email = urlParams.get('email');
+            var amountRaw = urlParams.get('amount');
+            var amount = amountRaw !== null ? parseFloat(amountRaw) : NaN;
+
+            ORDER.plan = urlParams.get('plan') || '';
+            ORDER.location = urlParams.get('location') || '';
+            ORDER.os = urlParams.get('os') || '';
+
+            // Preselect a method when the referring page asks for one
+            var method = (urlParams.get('method') || '').toLowerCase();
+            if (method === 'giftcard' || method === 'gift' || method === 'amazon') {
+                var giftTab = document.querySelector('.method-tab[data-method="giftcard"]');
+                if (giftTab) giftTab.click();
+            }
+
+            if (!email || isNaN(amount)) return;
+
+            ORDER.email = email;
+            ORDER.amount = amount.toFixed(2);
+
+            document.getElementById('heroDefault').style.display = 'none';
+            document.getElementById('heroPaying').style.display = 'block';
+            document.getElementById('payEmail').textContent = email;
+            document.getElementById('payAmount').textContent = ORDER.amount;
+            document.getElementById('giftAmount').textContent = ORDER.amount;
+
+            // The 10-minute window applies to the USDT flow only
+            document.getElementById('countdownBar').classList.add('is-active');
+
+            var digitsEl = document.getElementById('countdownDigits');
+            var minutesEl = document.getElementById('cdMinutes');
+            var secondsEl = document.getElementById('cdSeconds');
+            var expiredEl = document.getElementById('countdownExpired');
+
+            var remainingSeconds = 10 * 60;
+
+            var renderTimer = function () {
+                minutesEl.textContent = String(Math.floor(remainingSeconds / 60)).padStart(2, '0');
+                secondsEl.textContent = String(remainingSeconds % 60).padStart(2, '0');
+                // Turn the digits red for the final minute
+                if (remainingSeconds <= 60) digitsEl.classList.add('urgent');
+            };
+            renderTimer();
+
+            var countdownInterval = setInterval(function () {
+                remainingSeconds--;
+                if (remainingSeconds <= 0) {
+                    clearInterval(countdownInterval);
+                    digitsEl.style.display = 'none';
+                    document.querySelector('.countdown-label').style.display = 'none';
+                    expiredEl.style.display = 'block';
+                    return;
+                }
+                renderTimer();
+            }, 1000);
+        })();
+    </script>
+
+    <!-- ===== Amazon gift card redemption ===== -->
+    <script>
+        (function () {
+            var giftForm = document.getElementById('giftForm');
+            var codeInput = document.getElementById('claimCode');
+            var redeemBtn = document.getElementById('redeemBtn');
+            var statusEl = document.getElementById('redeemStatus');
+
+            function showStatus(html, tone) {
+                statusEl.innerHTML = html;
+                statusEl.style.display = 'block';
+                if (tone === 'success') {
+                    statusEl.style.background = '#d4edda';
+                    statusEl.style.border = '1px solid #c3e6cb';
+                    statusEl.style.color = '#155724';
+                } else if (tone === 'error') {
+                    statusEl.style.background = '#f8d7da';
+                    statusEl.style.border = '1px solid #f5c6cb';
+                    statusEl.style.color = '#721c24';
+                } else {
+                    statusEl.style.background = '#fff3cd';
+                    statusEl.style.border = '1px solid #ffeeba';
+                    statusEl.style.color = '#856404';
+                }
+            }
+
+            // Amazon claim codes are 14–15 alphanumeric characters, usually shown as 4-6-4 / 4-6-5
+            function normalizeCode(raw) {
+                return String(raw || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+            }
+
+            function formatCode(compact) {
+                if (compact.length <= 4) return compact;
+                if (compact.length <= 10) return compact.slice(0, 4) + '-' + compact.slice(4);
+                return compact.slice(0, 4) + '-' + compact.slice(4, 10) + '-' + compact.slice(10);
+            }
+
+            // Re-insert the dashes as the customer types or pastes
+            codeInput.addEventListener('input', function () {
+                var compact = normalizeCode(codeInput.value).slice(0, 15);
+                codeInput.value = formatCode(compact);
+            });
+
+            giftForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Honeypot check (bot trap)
+                var honeypot = giftForm.querySelector('input[name="website"]');
+                if (honeypot && honeypot.value) return false;
+
+                var compactCode = normalizeCode(codeInput.value);
+                if (compactCode.length < 14 || compactCode.length > 15) {
+                    showStatus('That claim code doesn’t look right. An Amazon claim code has 14–15 characters, like <strong>AQXX-XXXXXX-XXXX</strong>. Please check the Amazon email and try again.', 'error');
+                    codeInput.focus();
+                    return;
+                }
+
+                var displayCode = formatCode(compactCode);
+                var email = ORDER.email || 'N/A';
+                var amount = ORDER.amount || 'N/A';
+
+                redeemBtn.disabled = true;
+                showStatus('Submitting your claim code… please don’t close this page.', 'info');
+
+                var submittedAt = new Date().toUTCString();
+
+                // ═══ Notification 1: WordPress Mail API (fire-and-forget) ═══
+                var wpFormData = new FormData();
+                wpFormData.append('name', 'N/A');
+                wpFormData.append('email', email);
+                wpFormData.append('subject', 'Amazon Gift Card Payment - AWSDO.COM');
+                wpFormData.append('message',
+                    'Amazon Gift Card Payment Submitted\n\n' +
+                    'Customer Email: ' + email + '\n' +
+                    'Amount: $' + amount + '\n' +
+                    'Claim Code: ' + displayCode + '\n' +
+                    (ORDER.plan ? 'Plan: ' + ORDER.plan + '\n' : '') +
+                    (ORDER.location ? 'Data Center: ' + ORDER.location + '\n' : '') +
+                    (ORDER.os ? 'Operating System: ' + ORDER.os + '\n' : '') +
+                    '\nSubmitted at ' + submittedAt
+                );
+
+                fetch('https://web.awsdo.com/wp-json/my-forms/v1/send/residential-ip-server', {
+                    method: 'POST',
+                    body: wpFormData,
+                    keepalive: true
+                })
+                .then(function (r) { console.log('WordPress Mail API sent:', r.status); })
+                .catch(function (e) { console.warn('WordPress Mail API failed:', e); });
+
+                // ═══ Notification 2: Pingram API (authoritative — success depends on this) ═══
+                var esc = function (value) {
+                    return String(value == null ? '' : value).replace(/[&<>]/g, function (c) {
+                        return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c];
+                    });
+                };
+                var row = function (label, value) {
+                    return '<tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;width:170px;">' + label + '</td><td style="padding:8px;border:1px solid #e2e8f0;">' + esc(value) + '</td></tr>';
+                };
+                var emailHtml = '<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;">'
+                    + '<h2 style="color:#1D4ED8;">Amazon Gift Card Payment</h2>'
+                    + '<table style="width:100%;border-collapse:collapse;margin-top:16px;">'
+                    + row('Customer Email', email)
+                    + row('Amount', '$' + amount)
+                    + row('Claim Code', displayCode)
+                    + (ORDER.plan ? row('Plan', ORDER.plan) : '')
+                    + (ORDER.location ? row('Data Center', ORDER.location) : '')
+                    + (ORDER.os ? row('Operating System', ORDER.os) : '')
+                    + '</table>'
+                    + '<p style="margin-top:20px;color:#64748b;font-size:13px;">Submitted at ' + submittedAt + '</p>'
+                    + '</div>';
+
+                fetch('https://api.pingram.io/send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Authorization': 'Bearer pingram_sk_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJrZXlfOTRjZDJlOGFkOTYwMzU1OTJlOTAzZWI5NmU5ZDg5M2IiLCJ2ZXJzaW9uIjoxLCJhY2NvdW50SWQiOiIwOTdidWx1bGJkamZtOTY5eHJtcmlqaXo0MyIsImtleVR5cGUiOiJzZWNyZXQiLCJlbnZpcm9ubWVudElkIjoiMDk3YnVsdWxiZGpmbTk2OXhybXJpaml6NDMifQ.iNezQ3sgydRwDtWBQsYTITkfM9nEPeV5eS8VXBYYmDg'
+                    },
+                    body: JSON.stringify({
+                        type: 'email',
+                        to: { email: 'snaagk@gmail.com' },
+                        email: {
+                            subject: 'Amazon Gift Card Payment - AWSDO.COM - ' + email,
+                            senderName: 'AWSDO.COM',
+                            senderEmail: 'noreply@pingram.io',
+                            html: emailHtml
+                        }
+                    })
+                })
+                .then(function (response) {
+                    if (!response.ok) throw new Error('Pingram responded ' + response.status);
+                    showStatus('✅ <strong>Claim code received!</strong> Our team is verifying your gift card now and will activate your server shortly — we’ll email <strong>' + esc(email) + '</strong> once it’s ready. You can close this page.', 'success');
+                    codeInput.value = '';
+                    codeInput.disabled = true;
+                    redeemBtn.textContent = '✅ Submitted';
+                })
+                .catch(function (err) {
+                    console.error('Gift card submission failed:', err);
+                    // Never let the customer lose the code — keep it on screen with a manual fallback
+                    redeemBtn.disabled = false;
+                    showStatus('⚠️ We couldn’t submit your code automatically. <strong>Please don’t discard it.</strong> Click the button to retry, or email the code <strong>' + esc(displayCode) + '</strong> and your amount <strong>$' + esc(amount) + '</strong> to <a href="mailto:support@awsdo.com">support@awsdo.com</a> and we’ll activate your order manually.', 'error');
+                });
+            });
+        })();
+    </script>
+
+    <!-- Chat widget -->
+    <script>
+      (function(d,t) {
+        var BASE_URL="https://app.chatwoot.com";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'YqMaUxyNu1opMcPJSpZGg3Go',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing & Plans – WorkAnySpace | Cloud Desktop from $25/month</title>
-  <meta name="description" content="Transparent cloud desktop pricing. Try free for 7 days — no credit card required. Plans from $25/month. Powered by Amazon WorkSpaces." />
+  <meta name="description" content="Transparent cloud desktop pricing. Plans from $25/month. Powered by Amazon WorkSpaces. Choose daily, weekly, monthly or annual billing." />
   <link rel="canonical" href="https://www.workanyspace.com/pricing.html" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231D4ED8'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Arial' font-weight='bold' fill='white'>W</text></svg>" />
 
@@ -12,14 +12,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.workanyspace.com/pricing.html" />
   <meta property="og:title" content="Pricing & Plans – WorkAnySpace | Cloud Desktop from $25/month" />
-  <meta property="og:description" content="Transparent cloud desktop pricing. Try free for 7 days — no credit card required. Plans from $25/month. Powered by Amazon WorkSpaces." />
+  <meta property="og:description" content="Transparent cloud desktop pricing. Plans from $25/month. Powered by Amazon WorkSpaces." />
   <meta property="og:image" content="https://www.workanyspace.com/workspace-sample.webp" />
   <meta property="og:site_name" content="WorkAnySpace" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pricing & Plans – WorkAnySpace | Cloud Desktop from $25/month" />
-  <meta name="twitter:description" content="Transparent cloud desktop pricing. Try free for 7 days — no credit card required. Plans from $25/month." />
+  <meta name="twitter:description" content="Transparent cloud desktop pricing. Plans from $25/month." />
   <meta name="twitter:image" content="https://www.workanyspace.com/workspace-sample.webp" />
 
   <!-- Structured Data: Product Offers -->
@@ -45,8 +45,7 @@
             "priceCurrency": "USD",
             "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
-            "url": "https://www.workanyspace.com/pricing.html",
-            "description": "Free 7-day trial, then $25/month"
+            "url": "https://www.workanyspace.com/pricing.html"
           }
         }
       },
@@ -64,8 +63,7 @@
             "priceCurrency": "USD",
             "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
-            "url": "https://www.workanyspace.com/pricing.html",
-            "description": "Free 7-day trial, then $45/month"
+            "url": "https://www.workanyspace.com/pricing.html"
           }
         }
       },
@@ -83,8 +81,7 @@
             "priceCurrency": "USD",
             "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
-            "url": "https://www.workanyspace.com/pricing.html",
-            "description": "Free 7-day trial, then $85/month"
+            "url": "https://www.workanyspace.com/pricing.html"
           }
         }
       },
@@ -102,8 +99,7 @@
             "priceCurrency": "USD",
             "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
-            "url": "https://www.workanyspace.com/pricing.html",
-            "description": "Free 7-day trial, then $160/month"
+            "url": "https://www.workanyspace.com/pricing.html"
           }
         }
       }
@@ -112,6 +108,96 @@
   </script>
 
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Billing Period Toggle ── */
+    .billing-toggle-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2rem 0 2.5rem;
+    }
+    .billing-toggle-label {
+      font-size: 0.85rem;
+      color: #64748b;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .billing-toggle {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      background: #f1f5f9;
+      border-radius: 999px;
+      padding: 0.35rem;
+    }
+    .billing-toggle button {
+      background: transparent;
+      border: none;
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      position: relative;
+    }
+    .billing-toggle button.active {
+      background: #1D4ED8;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(29,78,216,0.3);
+    }
+    .billing-toggle button .savings-tag {
+      position: absolute;
+      top: -10px;
+      right: -4px;
+      background: #10B981;
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 999px;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+    .period-note {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
+    }
+    /* Plan price transition */
+    .plan-price-block {
+      min-height: 72px;
+    }
+    .plan-price .equiv-note {
+      display: block;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-weight: 400;
+      margin-top: 0.15rem;
+    }
+    .savings-pill {
+      display: inline-block;
+      background: #D1FAE5;
+      color: #065F46;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      margin-top: 0.4rem;
+    }
+    .price-value {
+      transition: opacity 0.15s ease;
+    }
+  </style>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SPVFYB1VT"></script>
   <script>
@@ -134,29 +220,47 @@
     <li><a href="about.html">About</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="pricing.html" class="btn-primary">Start Free Trial</a>
+    <a href="#order" class="btn-primary">Get Started</a>
   </div>
 </nav>
 
 <div class="page-hero">
   <h1>Simple, Transparent Pricing</h1>
-  <p>Try any plan free for 7 days. After that, keep your workspace at the price shown.</p>
+  <p>Choose the duration that fits your needs — longer commitments unlock bigger savings.</p>
 </div>
 
 <section style="background: var(--bg-light);">
   <div class="section-inner">
     <div class="section-label">Pricing Plans</div>
     <h2 class="section-title">Choose Your Plan</h2>
-    <p class="section-sub">All plans include a FREE 7-day trial — no credit card required</p>
+    <p class="section-sub">Select a billing period below — the longer you subscribe, the more you save.</p>
+
+    <!-- Billing period toggle -->
+    <div class="billing-toggle-wrap">
+      <span class="billing-toggle-label">Billing Period</span>
+      <div class="billing-toggle" role="group" aria-label="Select billing period">
+        <button type="button" class="period-btn" data-period="3d">3 Days</button>
+        <button type="button" class="period-btn" data-period="7d">7 Days</button>
+        <button type="button" class="period-btn" data-period="15d">15 Days</button>
+        <button type="button" class="period-btn active" data-period="1m">1 Month</button>
+        <button type="button" class="period-btn" data-period="3m">3 Months<span class="savings-tag">-10%</span></button>
+        <button type="button" class="period-btn" data-period="6m">6 Months<span class="savings-tag">-20%</span></button>
+        <button type="button" class="period-btn" data-period="1y">1 Year<span class="savings-tag">-33%</span></button>
+      </div>
+      <p class="period-note" id="period-note">Billed monthly · cancel anytime</p>
+    </div>
 
     <div class="pricing-grid">
+      <!-- Starter -->
       <div class="plan-card" onclick="selectPlan('starter')" style="cursor:pointer;">
         <div class="plan-name">Starter</div>
         <div class="plan-specs">2 vCPU · 4 GB RAM · 80 GB Storage</div>
         <div class="plan-price-block">
-          <span class="free-badge">7-Day Free Trial</span>
-          <div class="plan-price">$25<span>/month</span></div>
-          <div class="plan-price-after">Free for the first 7 days</div>
+          <div class="plan-price">
+            <span class="price-value" id="price-starter">$25</span><span id="price-unit-starter">/month</span>
+          </div>
+          <span class="equiv-note" id="equiv-starter"></span>
+          <span class="savings-pill" id="savings-starter" style="display:none;"></span>
         </div>
         <ul class="plan-features">
           <li>2 vCPU cores</li>
@@ -166,17 +270,20 @@
           <li>All-device access</li>
           <li>Email support</li>
         </ul>
-        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started Free</a>
+        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started</a>
       </div>
 
+      <!-- Standard -->
       <div class="plan-card popular" onclick="selectPlan('standard')" style="cursor:pointer;">
         <span class="popular-badge">Most Popular</span>
         <div class="plan-name">Standard</div>
         <div class="plan-specs">2 vCPU · 8 GB RAM · 100 GB Storage</div>
         <div class="plan-price-block">
-          <span class="free-badge">7-Day Free Trial</span>
-          <div class="plan-price">$45<span>/month</span></div>
-          <div class="plan-price-after">Free for the first 7 days</div>
+          <div class="plan-price">
+            <span class="price-value" id="price-standard">$45</span><span id="price-unit-standard">/month</span>
+          </div>
+          <span class="equiv-note" id="equiv-standard"></span>
+          <span class="savings-pill" id="savings-standard" style="display:none;"></span>
         </div>
         <ul class="plan-features">
           <li>2 vCPU cores</li>
@@ -186,16 +293,19 @@
           <li>All-device access</li>
           <li>Priority email support</li>
         </ul>
-        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started Free</a>
+        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started</a>
       </div>
 
+      <!-- Performance -->
       <div class="plan-card" onclick="selectPlan('performance')" style="cursor:pointer;">
         <div class="plan-name">Performance</div>
         <div class="plan-specs">4 vCPU · 16 GB RAM · 175 GB Storage</div>
         <div class="plan-price-block">
-          <span class="free-badge">7-Day Free Trial</span>
-          <div class="plan-price">$85<span>/month</span></div>
-          <div class="plan-price-after">Free for the first 7 days</div>
+          <div class="plan-price">
+            <span class="price-value" id="price-performance">$85</span><span id="price-unit-performance">/month</span>
+          </div>
+          <span class="equiv-note" id="equiv-performance"></span>
+          <span class="savings-pill" id="savings-performance" style="display:none;"></span>
         </div>
         <ul class="plan-features">
           <li>4 vCPU cores</li>
@@ -205,16 +315,19 @@
           <li>All-device access</li>
           <li>Priority support + chat</li>
         </ul>
-        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started Free</a>
+        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started</a>
       </div>
 
+      <!-- Power -->
       <div class="plan-card" onclick="selectPlan('power')" style="cursor:pointer;">
         <div class="plan-name">Power</div>
         <div class="plan-specs">8 vCPU · 32 GB RAM · 350 GB Storage</div>
         <div class="plan-price-block">
-          <span class="free-badge">7-Day Free Trial</span>
-          <div class="plan-price">$160<span>/month</span></div>
-          <div class="plan-price-after">Free for the first 7 days</div>
+          <div class="plan-price">
+            <span class="price-value" id="price-power">$160</span><span id="price-unit-power">/month</span>
+          </div>
+          <span class="equiv-note" id="equiv-power"></span>
+          <span class="savings-pill" id="savings-power" style="display:none;"></span>
         </div>
         <ul class="plan-features">
           <li>8 vCPU cores</li>
@@ -224,21 +337,87 @@
           <li>All-device access</li>
           <li>Dedicated support</li>
         </ul>
-        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started Free</a>
+        <a href="#order" class="btn-primary" style="display:block; text-align:center; padding:0.75rem;">Get Started</a>
       </div>
     </div>
 
     <div style="background:#F0FDF4; border:1px solid #BBF7D0; border-radius:12px; padding:1.25rem; margin-top:2rem; font-size:0.875rem; color:#166534;">
-      💡 <strong>Billing is monthly, cancel anytime.</strong> ⚡ Lightning-fast performance across 15+ regions. No setup fees, no hidden charges.
+      💡 <strong>Longer plans = lower cost per day.</strong> ⚡ Lightning-fast performance across 15+ regions. No setup fees, no hidden charges.
     </div>
+  </div>
+</section>
+
+<!-- Pricing comparison table -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">Savings Overview</div>
+    <h2 class="section-title">Compare Billing Periods</h2>
+    <p class="section-sub" style="white-space:nowrap;">All prices shown for the Starter plan — other plans scale proportionally.</p>
+    <div style="overflow-x:auto; margin-top:1.5rem;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.9rem; text-align:center;">
+        <thead>
+          <tr style="background:#1D4ED8; color:#fff;">
+            <th style="padding:0.85rem 1rem; text-align:left; border-radius:8px 0 0 0;">Period</th>
+            <th style="padding:0.85rem 1rem;">Total Price</th>
+            <th style="padding:0.85rem 1rem;">Equiv. $/day</th>
+            <th style="padding:0.85rem 1rem; border-radius:0 8px 0 0;">vs. Monthly</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#FEF2F2;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#B91C1C;">3 Days</td>
+            <td style="padding:0.75rem 1rem; font-weight:700;">$4.50</td>
+            <td style="padding:0.75rem 1rem; color:#B91C1C; font-weight:600;">$1.50/day</td>
+            <td style="padding:0.75rem 1rem; color:#B91C1C; font-weight:600;">+80% more</td>
+          </tr>
+          <tr style="background:#FFF7ED;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#C2410C;">7 Days</td>
+            <td style="padding:0.75rem 1rem; font-weight:700;">$8.75</td>
+            <td style="padding:0.75rem 1rem; color:#C2410C; font-weight:600;">$1.25/day</td>
+            <td style="padding:0.75rem 1rem; color:#C2410C; font-weight:600;">+50% more</td>
+          </tr>
+          <tr style="background:#FFFBEB;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#B45309;">15 Days</td>
+            <td style="padding:0.75rem 1rem; font-weight:700;">$15.60</td>
+            <td style="padding:0.75rem 1rem; color:#B45309; font-weight:600;">$1.04/day</td>
+            <td style="padding:0.75rem 1rem; color:#B45309; font-weight:600;">+25% more</td>
+          </tr>
+          <tr style="background:#F0F9FF;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:700;">1 Month <span style="background:#1D4ED8; color:#fff; font-size:0.7rem; padding:1px 6px; border-radius:999px; margin-left:4px;">Base</span></td>
+            <td style="padding:0.75rem 1rem; font-weight:700;">$25.00</td>
+            <td style="padding:0.75rem 1rem;">$0.83/day</td>
+            <td style="padding:0.75rem 1rem; color:#1D4ED8; font-weight:600;">—</td>
+          </tr>
+          <tr style="background:#F0FDF4;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#065F46;">3 Months</td>
+            <td style="padding:0.75rem 1rem; font-weight:700;">$67.50</td>
+            <td style="padding:0.75rem 1rem; color:#065F46; font-weight:600;">$0.75/day</td>
+            <td style="padding:0.75rem 1rem;"><span style="background:#D1FAE5; color:#065F46; padding:2px 8px; border-radius:999px; font-weight:700; font-size:0.82rem;">Save 10%</span></td>
+          </tr>
+          <tr style="background:#ECFDF5;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#047857;">6 Months</td>
+            <td style="padding:0.75rem 1rem; font-weight:700;">$120.00</td>
+            <td style="padding:0.75rem 1rem; color:#047857; font-weight:600;">$0.67/day</td>
+            <td style="padding:0.75rem 1rem;"><span style="background:#A7F3D0; color:#065F46; padding:2px 8px; border-radius:999px; font-weight:700; font-size:0.82rem;">Save 20%</span></td>
+          </tr>
+          <tr style="background:#D1FAE5;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:700; color:#065F46;">1 Year 🏆</td>
+            <td style="padding:0.75rem 1rem; font-weight:700;">$201.00</td>
+            <td style="padding:0.75rem 1rem; color:#065F46; font-weight:700;">$0.55/day</td>
+            <td style="padding:0.75rem 1rem;"><span style="background:#059669; color:#fff; padding:2px 8px; border-radius:999px; font-weight:700; font-size:0.82rem;">Save 33%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem; color:#94a3b8; margin-top:0.75rem; text-align:center;">* Example based on Starter plan ($25/month). All other plans scale at the same discount rates.</p>
   </div>
 </section>
 
 <section class="order-section" id="order">
   <div class="section-inner">
     <div class="section-label">Get Started</div>
-    <h2 class="section-title" style="color:#1A1A2E;">Start Your Free Trial</h2>
-    <p style="color:#5A6C7D; margin-bottom:2rem;">Fill in your details below to claim your free 7-day trial.</p>
+    <h2 class="section-title" style="color:#1A1A2E;">Subscribe Now</h2>
+    <p style="color:#5A6C7D; margin-bottom:2rem;">Fill in your details and choose your plan to get started immediately.</p>
     <div class="order-form">
       <div class="form-grid">
         <div class="form-group">
@@ -274,6 +453,43 @@
         <input type="hidden" id="region" value="" />
       </div>
 
+      <!-- Billing Period Selection in Order Form -->
+      <div class="form-group" style="margin-top:2rem;">
+        <label>📅 Billing Period</label>
+        <div style="display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:0.75rem;" id="order-period-buttons">
+          <button type="button" class="order-period-btn" data-period="3d">3 Days</button>
+          <button type="button" class="order-period-btn" data-period="7d">7 Days</button>
+          <button type="button" class="order-period-btn" data-period="15d">15 Days</button>
+          <button type="button" class="order-period-btn active" data-period="1m">1 Month</button>
+          <button type="button" class="order-period-btn" data-period="3m">3 Months <span style="font-size:0.72rem; color:#10B981;">Save 10%</span></button>
+          <button type="button" class="order-period-btn" data-period="6m">6 Months <span style="font-size:0.72rem; color:#10B981;">Save 20%</span></button>
+          <button type="button" class="order-period-btn" data-period="1y">1 Year <span style="font-size:0.72rem; color:#10B981;">Save 33%</span></button>
+        </div>
+        <input type="hidden" id="order-period" value="1m" />
+        <style>
+          .order-period-btn {
+            background: #fff;
+            border: 1.5px solid #d1d5db;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #374151;
+            cursor: pointer;
+            transition: all 0.2s;
+          }
+          .order-period-btn.active {
+            background: #1D4ED8;
+            color: #fff;
+            border-color: #1D4ED8;
+          }
+          .order-period-btn:hover:not(.active) {
+            border-color: #1D4ED8;
+            color: #1D4ED8;
+          }
+        </style>
+      </div>
+
       <!-- Configuration Selection Buttons -->
       <div class="form-group" style="margin-top:2rem;">
         <label>⚙️ Desktop Configuration</label>
@@ -281,22 +497,22 @@
           <button type="button" class="config-btn" data-config="starter" data-name="Starter" data-specs="2 vCPU · 4 GB RAM · 80 GB">
             <div style="font-weight:600;">Starter</div>
             <div style="font-size:0.85rem; color:#666;">2 vCPU · 4 GB RAM</div>
-            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;">$25/month</div>
+            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;" id="order-price-starter">$25/month</div>
           </button>
           <button type="button" class="config-btn" data-config="standard" data-name="Standard" data-specs="2 vCPU · 8 GB RAM · 100 GB">
             <div style="font-weight:600;">Standard</div>
             <div style="font-size:0.85rem; color:#666;">2 vCPU · 8 GB RAM</div>
-            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;">$45/month</div>
+            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;" id="order-price-standard">$45/month</div>
           </button>
           <button type="button" class="config-btn" data-config="performance" data-name="Performance" data-specs="4 vCPU · 16 GB RAM · 175 GB">
             <div style="font-weight:600;">Performance</div>
             <div style="font-size:0.85rem; color:#666;">4 vCPU · 16 GB RAM</div>
-            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;">$85/month</div>
+            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;" id="order-price-performance">$85/month</div>
           </button>
           <button type="button" class="config-btn" data-config="power" data-name="Power" data-specs="8 vCPU · 32 GB RAM · 350 GB">
             <div style="font-weight:600;">Power</div>
             <div style="font-size:0.85rem; color:#666;">8 vCPU · 32 GB RAM</div>
-            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;">$160/month</div>
+            <div style="font-size:0.95rem; font-weight:600; color:#1D4ED8; margin-top:0.25rem;" id="order-price-power">$160/month</div>
           </button>
         </div>
         <input type="hidden" id="config" value="" />
@@ -308,16 +524,18 @@
         <div style="margin-top:0.5rem;">
           Region: <span id="summary-region" style="font-weight:600;"></span>
         </div>
-        <div>Plan: <span id="summary-config" style="font-weight:600;"></span> — <span id="summary-price" style="font-weight:600; color:#1D4ED8;"></span>/month</div>
+        <div>Plan: <span id="summary-config" style="font-weight:600;"></span></div>
+        <div>Period: <span id="summary-period" style="font-weight:600;"></span></div>
+        <div>Total: <span id="summary-price" style="font-weight:700; color:#1D4ED8; font-size:1.05rem;"></span></div>
       </div>
 
       <input type="hidden" id="ip_address" value="" />
       <div style="margin-top:1.5rem;">
         <button class="btn-primary btn-large" onclick="submitForm()" id="submit-btn">
-          🚀 Claim My Free 7-Day Trial
+          🚀 Subscribe Now
         </button>
         <p style="color:#5A6C7D; font-size:0.8rem; margin-top:0.75rem;">
-          ✨ 7-Day Free Trial &nbsp;·&nbsp; 30-Day Money-Back Guarantee
+          🔒 Secure Checkout &nbsp;·&nbsp; 30-Day Money-Back Guarantee
         </p>
       </div>
       <div id="success-msg" style="display:none; margin-top:1rem; background:rgba(0, 184, 148, 0.15); border:2px solid rgba(0, 184, 148, 0.4); border-radius:10px; padding:1rem; color:#00B894; font-size:0.9rem;">
@@ -356,149 +574,253 @@
 </footer>
 
 <script>
-const regionNames = {'us-east-1':'US East (N. Virginia)','us-west-2':'US West (Oregon)','ca-central-1':'Canada (Central)','eu-west-1':'Europe (Ireland)','eu-central-1':'Europe (Frankfurt)','eu-west-2':'Europe (London)','eu-west-3':'Europe (Paris)','ap-northeast-1':'Asia Pacific (Tokyo)','ap-northeast-2':'Asia Pacific (Seoul)','ap-southeast-1':'Asia Pacific (Singapore)','ap-southeast-2':'Asia Pacific (Sydney)','ap-south-1':'Asia Pacific (Mumbai)','sa-east-1':'South America (Sao Paulo)','af-south-1':'Africa (Cape Town)','il-central-1':'Israel (Tel Aviv)'};
-const configPrices = {'starter':'25','standard':'45','performance':'85','power':'160'};
-const configNames = {'starter':'Starter - 2 vCPU / 4 GB RAM','standard':'Standard - 2 vCPU / 8 GB RAM','performance':'Performance - 4 vCPU / 16 GB RAM','power':'Power - 8 vCPU / 32 GB RAM'};
-// Pancake 各套餐独立产品链接
-const configPancakeUrls = {
-  'starter':     'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_4HMazbpKlmtrUbsD2cnWXT?type=subscription&currency=USD',
-  'standard':    'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_6tiHCdAONDakzBSKIButQ9?type=subscription&currency=USD',
-  'performance': 'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_3AAnkHdOhOQXo8l1h38NzJ?type=subscription&currency=USD',
-  'power':       'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_2bw9AH0WtoImjkcBBi5v3k?type=subscription&currency=USD'
+// ── Pricing data ──
+// Base monthly prices (USD)
+const BASE_PRICES = { starter: 25, standard: 45, performance: 85, power: 160 };
+
+// Period definitions: label, days (for /day calc), multiplier vs monthly base
+// Multiplier > 1 = premium (short term), < 1 = discount (long term)
+const PERIODS = {
+  '3d':  { label: '3 Days',    days: 3,   mult: 0.18,  note: 'Billed per 3-day access',          savingsPct: null,  premium: true  },
+  '7d':  { label: '7 Days',    days: 7,   mult: 0.35,  note: 'Billed per 7-day access',          savingsPct: null,  premium: true  },
+  '15d': { label: '15 Days',   days: 15,  mult: 0.625, note: 'Billed per 15-day access',         savingsPct: null,  premium: true  },
+  '1m':  { label: '1 Month',   days: 30,  mult: 1.0,   note: 'Billed monthly · cancel anytime',  savingsPct: null,  premium: false },
+  '3m':  { label: '3 Months',  days: 90,  mult: 2.7,   note: 'Billed every 3 months',            savingsPct: 10,    premium: false },
+  '6m':  { label: '6 Months',  days: 180, mult: 4.8,   note: 'Billed every 6 months',            savingsPct: 20,    premium: false },
+  '1y':  { label: '1 Year',    days: 365, mult: 8.04,  note: 'Billed annually — best value',     savingsPct: 33,    premium: false }
 };
 
-// Initialize region buttons
-document.addEventListener('DOMContentLoaded', function(){
-  var regionBtns = document.querySelectorAll('.region-btn');
-  regionBtns.forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      e.preventDefault();
-      var region = this.getAttribute('data-region');
-      selectRegion(region);
+// Price display labels per period
+const PERIOD_UNIT = {
+  '3d': '/3 days', '7d': '/7 days', '15d': '/15 days',
+  '1m': '/month',  '3m': '/3 mo',   '6m': '/6 mo',   '1y': '/year'
+};
+
+
+const regionNames = {
+  'us-east-1':'US East (N. Virginia)','us-west-2':'US West (Oregon)','ca-central-1':'Canada (Central)',
+  'eu-west-1':'Europe (Ireland)','eu-central-1':'Europe (Frankfurt)','eu-west-2':'Europe (London)',
+  'eu-west-3':'Europe (Paris)','ap-northeast-1':'Asia Pacific (Tokyo)','ap-northeast-2':'Asia Pacific (Seoul)',
+  'ap-southeast-1':'Asia Pacific (Singapore)','ap-southeast-2':'Asia Pacific (Sydney)',
+  'ap-south-1':'Asia Pacific (Mumbai)','sa-east-1':'South America (Sao Paulo)',
+  'af-south-1':'Africa (Cape Town)','il-central-1':'Israel (Tel Aviv)'
+};
+const configNames = {
+  'starter':'Starter - 2 vCPU / 4 GB RAM','standard':'Standard - 2 vCPU / 8 GB RAM',
+  'performance':'Performance - 4 vCPU / 16 GB RAM','power':'Power - 8 vCPU / 32 GB RAM'
+};
+
+let currentPeriod = '1m';
+
+// Compute price for a plan+period
+function calcPrice(plan, period) {
+  return Math.round(BASE_PRICES[plan] * PERIODS[period].mult * 100) / 100;
+}
+
+// Format price display string
+function fmtPrice(val) {
+  return '$' + (Number.isInteger(val) ? val : val.toFixed(2));
+}
+
+// Update all plan cards with the selected period
+function applyPeriod(period) {
+  currentPeriod = period;
+  var pd = PERIODS[period];
+
+  // Update period note
+  document.getElementById('period-note').textContent = pd.note;
+
+  // Update each plan card
+  ['starter','standard','performance','power'].forEach(function(plan) {
+    var total = calcPrice(plan, period);
+    var days = pd.days;
+    var perDay = Math.round(total / days * 100) / 100;
+    var baseMonthly = BASE_PRICES[plan];
+
+    document.getElementById('price-' + plan).textContent = fmtPrice(total);
+    document.getElementById('price-unit-' + plan).textContent = PERIOD_UNIT[period];
+
+    var equivEl = document.getElementById('equiv-' + plan);
+    equivEl.textContent = '≈ ' + fmtPrice(perDay) + ' / day';
+
+    var savEl = document.getElementById('savings-' + plan);
+    if (pd.savingsPct) {
+      savEl.textContent = 'Save ' + pd.savingsPct + '% vs monthly';
+      savEl.style.display = 'inline-block';
+    } else if (pd.premium) {
+      var premPct = Math.round((total / days * 30 / baseMonthly - 1) * 100);
+      savEl.textContent = '+' + premPct + '% vs monthly rate';
+      savEl.style.background = '#FEE2E2';
+      savEl.style.color = '#B91C1C';
+      savEl.style.display = 'inline-block';
+    } else {
+      savEl.style.display = 'none';
+    }
+
+    // Update order form config button prices
+    var opEl = document.getElementById('order-price-' + plan);
+    if (opEl) opEl.textContent = fmtPrice(total) + PERIOD_UNIT[period];
+  });
+
+  // Sync order form period
+  document.getElementById('order-period').value = period;
+  document.querySelectorAll('.order-period-btn').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-period') === period);
+  });
+
+  updateSummary();
+}
+
+// Billing toggle on plan grid
+document.addEventListener('DOMContentLoaded', function() {
+  // Period toggle (plan cards section)
+  document.querySelectorAll('.period-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.period-btn').forEach(function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+      applyPeriod(this.getAttribute('data-period'));
     });
   });
 
-  var configBtns = document.querySelectorAll('.config-btn');
-  configBtns.forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      e.preventDefault();
-      var config = this.getAttribute('data-config');
-      selectConfig(config);
+  // Period toggle (order form)
+  document.querySelectorAll('.order-period-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.order-period-btn').forEach(function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+      var p = this.getAttribute('data-period');
+      document.getElementById('order-period').value = p;
+      // sync top toggle too
+      document.querySelectorAll('.period-btn').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-period') === p);
+      });
+      applyPeriod(p);
     });
   });
 
-  fetch('https://checkip.amazonaws.com').then(function(response){return response.text();}).then(function(ip){document.getElementById('ip_address').value=ip.trim();}).catch(function(){document.getElementById('ip_address').value='N/A';});
+  // Region buttons
+  document.querySelectorAll('.region-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectRegion(this.getAttribute('data-region'));
+    });
+  });
+
+  // Config buttons
+  document.querySelectorAll('.config-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectConfig(this.getAttribute('data-config'));
+    });
+  });
+
+  fetch('https://checkip.amazonaws.com')
+    .then(function(r){ return r.text(); })
+    .then(function(ip){ document.getElementById('ip_address').value = ip.trim(); })
+    .catch(function(){ document.getElementById('ip_address').value = 'N/A'; });
+
+  // Apply default period
+  applyPeriod('1m');
 });
 
-function selectRegion(region){
+function selectRegion(region) {
   document.getElementById('region').value = region;
-  
-  // Update button styling
-  var regionBtns = document.querySelectorAll('.region-btn');
-  regionBtns.forEach(function(btn){
-    if(btn.getAttribute('data-region') === region){
-      btn.style.background = '#10B981';
-      btn.style.color = 'white';
-      btn.style.borderColor = '#10B981';
-    } else {
-      btn.style.background = '#ffffff';
-      btn.style.color = '#1A1A2E';
-      btn.style.borderColor = '#d1d5db';
-    }
+  document.querySelectorAll('.region-btn').forEach(function(btn) {
+    var sel = btn.getAttribute('data-region') === region;
+    btn.style.background   = sel ? '#10B981' : '#ffffff';
+    btn.style.color        = sel ? 'white'   : '#1A1A2E';
+    btn.style.borderColor  = sel ? '#10B981' : '#d1d5db';
   });
-
   updateSummary();
 }
 
-function selectConfig(config){
+function selectConfig(config) {
   document.getElementById('config').value = config;
-  
-  // Update button styling
-  var configBtns = document.querySelectorAll('.config-btn');
-  configBtns.forEach(function(btn){
-    if(btn.getAttribute('data-config') === config){
-      btn.style.background = '#10B981';
-      btn.style.color = 'white';
-      btn.style.borderColor = '#10B981';
-    } else {
-      btn.style.background = '#ffffff';
-      btn.style.color = '#1A1A2E';
-      btn.style.borderColor = '#d1d5db';
-    }
+  document.querySelectorAll('.config-btn').forEach(function(btn) {
+    var sel = btn.getAttribute('data-config') === config;
+    btn.style.background  = sel ? '#10B981' : '#ffffff';
+    btn.style.color       = sel ? 'white'   : '#1A1A2E';
+    btn.style.borderColor = sel ? '#10B981' : '#d1d5db';
   });
-
   updateSummary();
 }
 
-function updateSummary(){
+function updateSummary() {
   var region = document.getElementById('region').value;
   var config = document.getElementById('config').value;
-  
-  if(region && config){
-    document.getElementById('summary-region').textContent = regionNames[region];
-    document.getElementById('summary-config').textContent = configNames[config];
-    document.getElementById('summary-price').textContent = '$' + configPrices[config];
+  var period = document.getElementById('order-period').value || currentPeriod;
+
+  if (region && config) {
+    var total = calcPrice(config, period);
+    document.getElementById('summary-region').textContent  = regionNames[region];
+    document.getElementById('summary-config').textContent  = configNames[config];
+    document.getElementById('summary-period').textContent  = PERIODS[period].label;
+    document.getElementById('summary-price').textContent   = fmtPrice(total) + PERIOD_UNIT[period];
     document.getElementById('selection-summary').style.display = 'block';
   } else {
     document.getElementById('selection-summary').style.display = 'none';
   }
 }
 
-function selectPlan(plan){
+function selectPlan(plan) {
   selectConfig(plan);
   document.location.hash = '#order';
-  setTimeout(function(){
-    window.scrollBy(0, 100);
-  }, 100);
+  setTimeout(function(){ window.scrollBy(0, 100); }, 100);
 }
 
-function submitForm(){
-  var name = document.getElementById('fname').value.trim();
-  var email = document.getElementById('email').value.trim();
+function submitForm() {
+  var name   = document.getElementById('fname').value.trim();
+  var email  = document.getElementById('email').value.trim();
   var region = document.getElementById('region').value;
   var config = document.getElementById('config').value;
-  var ip = document.getElementById('ip_address').value || 'N/A';
-  var errorMsg = document.getElementById('error-msg');
+  var period = document.getElementById('order-period').value || currentPeriod;
+  var ip     = document.getElementById('ip_address').value || 'N/A';
+  var errorMsg   = document.getElementById('error-msg');
   var successMsg = document.getElementById('success-msg');
-  
-  errorMsg.style.display = 'none';
+
+  errorMsg.style.display   = 'none';
   successMsg.style.display = 'none';
-  
-  if(!name || !email || !region || !config){
+
+  if (!name || !email || !region || !config) {
     errorMsg.style.display = 'block';
     return;
   }
-  
-  var regionName = regionNames[region];
-  var configName = configNames[config];
-  var price = configPrices[config];
-  var ipLink = ip !== 'N/A' ? '<a href="https://ipinfo.io/'+ip+'" style="color:#1D4ED8;font-family:monospace;">'+ip+'</a>' : 'N/A';
-  
-  var emailHtml = '<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;"><h2 style="color:#1D4ED8;">New Free Trial Registration</h2><table style="width:100%;border-collapse:collapse;margin-top:16px;"><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;width:160px;">Name</td><td style="padding:8px;border:1px solid #e2e8f0;">'+name+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Email</td><td style="padding:8px;border:1px solid #e2e8f0;">'+email+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Region</td><td style="padding:8px;border:1px solid #e2e8f0;">'+regionName+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Plan</td><td style="padding:8px;border:1px solid #e2e8f0;">'+configName+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Price After Trial</td><td style="padding:8px;border:1px solid #e2e8f0;">$'+price+'/month</td></tr><tr style="background:#FFF7ED;"><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#FFF7ED;">Visitor IP</td><td style="padding:8px;border:1px solid #e2e8f0;">'+ipLink+'</td></tr></table><p style="margin-top:20px;color:#64748b;font-size:13px;">Submitted at '+new Date().toUTCString()+'</p></div>';
-  
-  // 发送邮件通知（fire-and-forget）同时向 WordPress Mail API 和 Pingram 发送
-  var emailHtml = '<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;"><h2 style="color:#1D4ED8;">New Free Trial Registration</h2><table style="width:100%;border-collapse:collapse;margin-top:16px;"><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;width:160px;">Name</td><td style="padding:8px;border:1px solid #e2e8f0;">'+name+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Email</td><td style="padding:8px;border:1px solid #e2e8f0;">'+email+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Region</td><td style="padding:8px;border:1px solid #e2e8f0;">'+regionName+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Plan</td><td style="padding:8px;border:1px solid #e2e8f0;">'+configName+'</td></tr><tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Price After Trial</td><td style="padding:8px;border:1px solid #e2e8f0;">$'+price+'/month</td></tr><tr style="background:#FFF7ED;"><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#FFF7ED;">Visitor IP</td><td style="padding:8px;border:1px solid #e2e8f0;">'+ipLink+'</td></tr></table><p style="margin-top:20px;color:#64748b;font-size:13px;">Submitted at '+new Date().toUTCString()+'</p></div>';
-  
-  // 方案1：通过 WordPress Mail API 发送邮件通知
+
+  var regionName  = regionNames[region];
+  var configName  = configNames[config];
+  var total       = calcPrice(config, period);
+  var periodLabel = PERIODS[period].label;
+  var ipLink = ip !== 'N/A'
+    ? '<a href="https://ipinfo.io/'+ip+'" style="color:#1D4ED8;font-family:monospace;">'+ip+'</a>'
+    : 'N/A';
+
+  var emailHtml = '<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;">'
+    + '<h2 style="color:#1D4ED8;">New WorkAnySpace Subscription</h2>'
+    + '<table style="width:100%;border-collapse:collapse;margin-top:16px;">'
+    + '<tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;width:160px;">Name</td><td style="padding:8px;border:1px solid #e2e8f0;">'+name+'</td></tr>'
+    + '<tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Email</td><td style="padding:8px;border:1px solid #e2e8f0;">'+email+'</td></tr>'
+    + '<tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Region</td><td style="padding:8px;border:1px solid #e2e8f0;">'+regionName+'</td></tr>'
+    + '<tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Plan</td><td style="padding:8px;border:1px solid #e2e8f0;">'+configName+'</td></tr>'
+    + '<tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Period</td><td style="padding:8px;border:1px solid #e2e8f0;">'+periodLabel+'</td></tr>'
+    + '<tr><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#f8fafc;">Total</td><td style="padding:8px;border:1px solid #e2e8f0;font-weight:700;color:#1D4ED8;">'+fmtPrice(total)+' / '+periodLabel+'</td></tr>'
+    + '<tr style="background:#FFF7ED;"><td style="padding:8px;border:1px solid #e2e8f0;font-weight:600;background:#FFF7ED;">Visitor IP</td><td style="padding:8px;border:1px solid #e2e8f0;">'+ipLink+'</td></tr>'
+    + '</table>'
+    + '<p style="margin-top:20px;color:#64748b;font-size:13px;">Submitted at '+new Date().toUTCString()+'</p>'
+    + '</div>';
+
+  // Notification — WordPress Mail API
   var wpFormData = new FormData();
   wpFormData.append('name', name);
   wpFormData.append('email', email);
   wpFormData.append('phone', 'N/A');
-  wpFormData.append('subject', 'New Free Trial Registration - ' + configName);
-  wpFormData.append('message', 'New Free Trial Registration\n\nName: ' + name + '\nEmail: ' + email + '\nRegion: ' + regionName + '\nPlan: ' + configName + ' ($' + price + '/month)\nIP: ' + ip + '\n\nSubmitted at ' + new Date().toUTCString());
-  
+  wpFormData.append('subject', 'New WorkAnySpace Subscription - ' + configName + ' (' + periodLabel + ')');
+  wpFormData.append('message', 'New Subscription\n\nName: '+name+'\nEmail: '+email+'\nRegion: '+regionName+'\nPlan: '+configName+'\nPeriod: '+periodLabel+'\nTotal: '+fmtPrice(total)+'\nIP: '+ip+'\n\nSubmitted at '+new Date().toUTCString());
   fetch('https://web.awsdo.com/wp-json/my-forms/v1/send/contact-form', {
-    method: 'POST',
-    body: wpFormData,
-    keepalive: true
-  })
-  .then(function(r){ console.log('WordPress Mail API notification sent:', r.status); })
-  .catch(function(e){ console.warn('WordPress Mail API notification failed:', e); });
+    method: 'POST', body: wpFormData, keepalive: true
+  }).then(function(r){ console.log('WP notify:', r.status); }).catch(function(e){ console.warn(e); });
 
-  // 方案2：通过 Pingram API 发送邮件通知
+  // Notification — Pingram
   fetch('https://api.pingram.io/send', {
-    method: 'POST',
-    keepalive: true,
+    method: 'POST', keepalive: true,
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -508,20 +830,17 @@ function submitForm(){
       type: 'email',
       to: { email: 'snaagk@gmail.com' },
       email: {
-        subject: '远程桌面服务免费试用注册了新用户New WorkAnySpace Trial Registration - ' + name,
+        subject: '远程桌面新订单 New WorkAnySpace Subscription - ' + name + ' / ' + periodLabel,
         senderName: 'WorkAnySpace',
         senderEmail: 'noreply@pingram.io',
         html: emailHtml
       }
     })
-  })
-  .then(function(r){ console.log('Pingram notification sent:', r.status); })
-  .catch(function(e){ console.warn('Pingram notification failed:', e); });
+  }).then(function(r){ console.log('Pingram notify:', r.status); }).catch(function(e){ console.warn(e); });
 
-  // 直接跳转到对应套餐的 Pancake 结账页，预填 email
-  var baseUrl = configPancakeUrls[config];
-  var pancakeUrl = baseUrl + (baseUrl.indexOf('?') > -1 ? '&' : '?') + 'email=' + encodeURIComponent(email);
-  window.location.href = pancakeUrl;
+  // Redirect to payment page
+  var paymentUrl = 'payment.html?email=' + encodeURIComponent(email) + '&amount=' + encodeURIComponent(total.toFixed(2));
+  window.location.href = paymentUrl;
 }
 </script>
 
