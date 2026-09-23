@@ -20,58 +20,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
     <style>
+        /* ── Reset styles.css overrides that conflict with this page ── */
+        .hero {
+            min-height: unset !important;
+            background: linear-gradient(135deg, #0a1628 0%, #0d2a5e 50%, #0056b3 100%) !important;
+            display: block !important;
+            padding: 64px 0 96px !important;
+            align-items: unset !important;
+            justify-content: unset !important;
+        }
+        .hero::before {
+            background: radial-gradient(ellipse at center, rgba(0,123,255,0.18) 0%, transparent 60%) !important;
+            inset: unset !important;
+            top: -50% !important;
+            left: -50% !important;
+            width: 200% !important;
+            height: 200% !important;
+            animation: pulse-bg 6s ease-in-out infinite alternate !important;
+        }
+        /* nav from styles.css is correct — just ensure body gets top padding for fixed nav */
+        body { padding-top: 64px; }
         * { box-sizing: border-box; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #f4f7fa 100%);
-            color: #1e293b;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-        .container {
-            width: 90%;
-            max-width: 1300px;
-            margin: auto;
-        }
-        header {
-            background: #ffffff;
-            padding: 12px 0;
-            border-bottom: 1px solid #e9ecef;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        header .header-inner {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            justify-content: space-between;
-        }
-        header .logo { flex-shrink: 0; }
-        header .logo img { height: 44px; width: auto; display: block; }
-        nav ul {
-            padding: 0;
-            list-style: none;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 4px;
-        }
-        nav ul li { display: inline; margin: 0 10px; }
-        nav a {
-            color: #495057;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            white-space: nowrap;
-        }
-        nav a:hover, nav a.active { color: #007bff; }
 
         /* ---------- Hero ---------- */
         .hero {
@@ -130,27 +99,31 @@
         .hero-paying { display: none; }
 
         .pay-headline {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.3em;
-            white-space: nowrap;
-            font-size: clamp(17px, 2.55vw, 38px);
-            font-weight: 400;
-            letter-spacing: -0.01em;
-            line-height: 1.3;
-            margin-bottom: 0;
-            max-width: 100%;
+            gap: 0.35em;
+            flex-wrap: wrap;
+            white-space: normal;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0;
+            line-height: 1.5;
+            margin: 0 auto 6px;
+            max-width: 560px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 999px;
+            padding: 7px 20px;
         }
         .live-dot {
-            width: 0.3em;
-            height: 0.3em;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: #26e0a3;
-            box-shadow: 0 0 0 0.12em rgba(38, 224, 163, 0.25);
+            box-shadow: 0 0 0 2px rgba(38, 224, 163, 0.25);
             animation: live-pulse 1.8s ease-in-out infinite;
             flex-shrink: 0;
-            margin-right: 0.14em;
         }
         @keyframes live-pulse {
             0%, 100% { opacity: 1;   transform: scale(1); }
@@ -158,9 +131,16 @@
         }
         .ph-label { color: #7dd3fc; }
         .ph-sep { color: rgba(255,255,255,0.35); }
-        .ph-email { color: #ffffff; }
-        .ph-verb { color: #a9c2dd; }
-        .ph-amount { color: #26e0a3; }
+        .ph-email { color: #e2e8f0; font-weight: 600; overflow-wrap: anywhere; }
+        .ph-verb { color: #94a3b8; }
+        .ph-amount { color: #26e0a3; font-weight: 700; }
+        .ph-amount .cur {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: #7dd3fc;
+            margin-left: 0.15em;
+            vertical-align: baseline;
+        }
 
         /* ---------- Countdown (USDT panel only) ---------- */
         .countdown-bar {
@@ -398,6 +378,9 @@
         }
 
         /* ---------- Instructions ---------- */
+        .steps {
+            background: transparent !important;
+        }
         .steps h3 {
             font-size: 22px;
             font-weight: 800;
@@ -597,16 +580,6 @@
             pointer-events: none;
         }
 
-        footer {
-            background: #0a1628;
-            color: #94a3b8;
-            padding: 28px 0;
-            text-align: center;
-            font-size: 13px;
-        }
-        footer p { margin: 0; }
-        footer a { color: #cbd5e1; text-decoration: none; }
-        footer a:hover { color: #ffffff; text-decoration: underline; }
 
         /* ---------- Responsive ---------- */
         @media (max-width: 940px) {
@@ -623,14 +596,9 @@
         }
         @media (max-width: 760px) {
             .pay-headline {
-                flex-wrap: wrap;
-                white-space: normal;
-                font-size: 26px;
-                gap: 0.2em 0.32em;
+                font-size: 13px;
+                padding: 6px 16px;
             }
-            .pay-headline .ph-label { flex-basis: 100%; }
-            .pay-headline .ph-sep { display: none; }
-            .ph-email { overflow-wrap: anywhere; word-break: break-word; min-width: 0; }
         }
         @media (max-width: 620px) {
             header .header-inner { flex-direction: column; gap: 12px; }
