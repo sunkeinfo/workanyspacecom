@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pricing & Plans – WorkAnySpace | Cloud Desktop from $25/month</title>
-  <meta name="description" content="Transparent cloud desktop pricing. Plans from $25/month. Powered by Amazon WorkSpaces. Choose daily, weekly, monthly or annual billing." />
+  <title>Pricing & Plans – WorkAnySpace | Cloud Desktop from $8.75</title>
+  <meta name="description" content="Transparent cloud desktop pricing. Start with the 7-day Starter deal for just $8.75, or subscribe from $25/month. Powered by Amazon WorkSpaces." />
   <link rel="canonical" href="https://www.workanyspace.com/pricing.html" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231D4ED8'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Arial' font-weight='bold' fill='white'>W</text></svg>" />
 
@@ -12,14 +12,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.workanyspace.com/pricing.html" />
   <meta property="og:title" content="Pricing & Plans – WorkAnySpace | Cloud Desktop from $25/month" />
-  <meta property="og:description" content="Transparent cloud desktop pricing. Plans from $25/month. Powered by Amazon WorkSpaces." />
+  <meta property="og:description" content="Transparent cloud desktop pricing. Start with the 7-day Starter deal for just $8.75, or subscribe from $25/month. Powered by Amazon WorkSpaces." />
   <meta property="og:image" content="https://www.workanyspace.com/workspace-sample.webp" />
   <meta property="og:site_name" content="WorkAnySpace" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pricing & Plans – WorkAnySpace | Cloud Desktop from $25/month" />
-  <meta name="twitter:description" content="Transparent cloud desktop pricing. Plans from $25/month." />
+  <meta name="twitter:description" content="Transparent cloud desktop pricing. Start with the 7-day Starter deal for just $8.75." />
   <meta name="twitter:image" content="https://www.workanyspace.com/workspace-sample.webp" />
 
   <!-- Structured Data: Product Offers -->
@@ -196,6 +196,57 @@
     .price-value {
       transition: opacity 0.15s ease;
     }
+
+    /* ── Disabled (unavailable) billing period buttons ── */
+    .billing-toggle button:disabled,
+    .billing-toggle button.disabled {
+      background: #e2e8f0;
+      color: #b6c2d1;
+      cursor: not-allowed;
+      box-shadow: none;
+      opacity: 0.65;
+    }
+    .billing-toggle button:disabled .savings-tag,
+    .billing-toggle button.disabled .savings-tag { display: none; }
+    .order-period-btn:disabled,
+    .order-period-btn.disabled {
+      background: #f1f5f9 !important;
+      color: #b6c2d1 !important;
+      border-color: #e2e8f0 !important;
+      cursor: not-allowed !important;
+      opacity: 0.65;
+    }
+    .order-period-btn:disabled span { color: inherit !important; }
+
+    /* ── 7-Day Starter deal emphasis ── */
+    .billing-toggle button.active.deal-active {
+      background: #FF6B35;
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(255, 107, 53, 0.4);
+    }
+    .order-period-btn.active.deal-active {
+      background: #FF6B35;
+      border-color: #FF6B35;
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(255, 107, 53, 0.35);
+    }
+    .deal-badge {
+      display: inline-block;
+      background: #FF6B35;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 8px rgba(255, 107, 53, 0.35);
+    }
+    .plan-card.deal-highlight {
+      border-color: #FF6B35;
+      box-shadow: 0 6px 22px rgba(255, 107, 53, 0.22);
+    }
+    .plan-card.plan-unavailable { opacity: 0.6; }
   </style>
 
   <!-- Google tag (gtag.js) -->
@@ -226,21 +277,21 @@
 
 <div class="page-hero">
   <h1>Simple, Transparent Pricing</h1>
-  <p>Choose the duration that fits your needs — longer commitments unlock bigger savings.</p>
+  <p>Start with the 7-day Starter plan for just <strong>$8.75</strong> — or commit longer to unlock bigger savings. Set up in minutes, cancel anytime.</p>
 </div>
 
 <section style="background: var(--bg-light);">
   <div class="section-inner">
     <div class="section-label">Pricing Plans</div>
     <h2 class="section-title">Choose Your Plan</h2>
-    <p class="section-sub">Select a billing period below — the longer you subscribe, the more you save.</p>
+    <p class="section-sub">Select a billing period below — or grab the 7-day Starter deal for just <strong>$8.75</strong>. Periods without a listed price are greyed out.</p>
 
     <!-- Billing period toggle -->
     <div class="billing-toggle-wrap">
       <span class="billing-toggle-label">Billing Period</span>
       <div class="billing-toggle" role="group" aria-label="Select billing period">
         <button type="button" class="period-btn" data-period="3d">3 Days</button>
-        <button type="button" class="period-btn" data-period="7d">7 Days</button>
+        <button type="button" class="period-btn" data-period="7d">7 Days<span class="savings-tag" style="background:#FF6B35;">🔥 Deal</span></button>
         <button type="button" class="period-btn" data-period="15d">15 Days</button>
         <button type="button" class="period-btn active" data-period="1m">1 Month</button>
         <button type="button" class="period-btn" data-period="3m">3 Months<span class="savings-tag">-10%</span></button>
@@ -252,7 +303,8 @@
 
     <div class="pricing-grid">
       <!-- Starter -->
-      <div class="plan-card" onclick="selectPlan('starter')" style="cursor:pointer;">
+      <div class="plan-card" id="card-starter" onclick="selectPlan('starter')" style="cursor:pointer;">
+        <span class="deal-badge">⚡ 7-Day Deal · just $8.75</span>
         <div class="plan-name">Starter</div>
         <div class="plan-specs">2 vCPU · 4 GB RAM · 80 GB Storage</div>
         <div class="plan-price-block">
@@ -263,6 +315,7 @@
           <span class="savings-pill" id="savings-starter" style="display:none;"></span>
         </div>
         <ul class="plan-features">
+          <li style="color:#FF6B35; font-weight:700;">⚡ Try 7 days for only $8.75 — start in minutes</li>
           <li>2 vCPU cores</li>
           <li>4 GB RAM</li>
           <li>80 GB SSD Storage</li>
@@ -274,7 +327,7 @@
       </div>
 
       <!-- Standard -->
-      <div class="plan-card popular" onclick="selectPlan('standard')" style="cursor:pointer;">
+      <div class="plan-card popular" id="card-standard" onclick="selectPlan('standard')" style="cursor:pointer;">
         <span class="popular-badge">Most Popular</span>
         <div class="plan-name">Standard</div>
         <div class="plan-specs">2 vCPU · 8 GB RAM · 100 GB Storage</div>
@@ -297,7 +350,7 @@
       </div>
 
       <!-- Performance -->
-      <div class="plan-card" onclick="selectPlan('performance')" style="cursor:pointer;">
+      <div class="plan-card" id="card-performance" onclick="selectPlan('performance')" style="cursor:pointer;">
         <div class="plan-name">Performance</div>
         <div class="plan-specs">4 vCPU · 16 GB RAM · 175 GB Storage</div>
         <div class="plan-price-block">
@@ -319,7 +372,7 @@
       </div>
 
       <!-- Power -->
-      <div class="plan-card" onclick="selectPlan('power')" style="cursor:pointer;">
+      <div class="plan-card" id="card-power" onclick="selectPlan('power')" style="cursor:pointer;">
         <div class="plan-name">Power</div>
         <div class="plan-specs">8 vCPU · 32 GB RAM · 350 GB Storage</div>
         <div class="plan-price-block">
@@ -352,7 +405,7 @@
   <div class="section-inner">
     <div class="section-label">Savings Overview</div>
     <h2 class="section-title">Compare Billing Periods</h2>
-    <p class="section-sub" style="white-space:nowrap;">All prices shown for the Starter plan — other plans scale proportionally.</p>
+    <p class="section-sub">Prices shown for the Starter plan — other plans are billed monthly.</p>
     <div style="overflow-x:auto; margin-top:1.5rem;">
       <table style="width:100%; border-collapse:collapse; font-size:0.9rem; text-align:center;">
         <thead>
@@ -364,23 +417,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr style="background:#FEF2F2;">
-            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#B91C1C;">3 Days</td>
-            <td style="padding:0.75rem 1rem; font-weight:700;">$4.50</td>
-            <td style="padding:0.75rem 1rem; color:#B91C1C; font-weight:600;">$1.50/day</td>
-            <td style="padding:0.75rem 1rem; color:#B91C1C; font-weight:600;">+80% more</td>
+          <tr style="background:#F1F5F9;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#94a3b8;">3 Days</td>
+            <td style="padding:0.75rem 1rem; color:#94a3b8;">—</td>
+            <td style="padding:0.75rem 1rem; color:#94a3b8;">—</td>
+            <td style="padding:0.75rem 1rem;"><span style="background:#E2E8F0; color:#94a3b8; padding:2px 8px; border-radius:999px; font-weight:600; font-size:0.8rem;">Unavailable</span></td>
           </tr>
-          <tr style="background:#FFF7ED;">
-            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#C2410C;">7 Days</td>
-            <td style="padding:0.75rem 1rem; font-weight:700;">$8.75</td>
+          <tr style="background:#FFF4E6;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:700; color:#C2410C;">7 Days <span style="background:#FF6B35; color:#fff; font-size:0.7rem; padding:1px 6px; border-radius:999px; margin-left:4px;">🔥 Deal</span></td>
+            <td style="padding:0.75rem 1rem; font-weight:700; color:#C2410C;">$8.75</td>
             <td style="padding:0.75rem 1rem; color:#C2410C; font-weight:600;">$1.25/day</td>
-            <td style="padding:0.75rem 1rem; color:#C2410C; font-weight:600;">+50% more</td>
+            <td style="padding:0.75rem 1rem;"><span style="background:#FF6B35; color:#fff; padding:2px 8px; border-radius:999px; font-weight:700; font-size:0.8rem;">Entry Deal</span></td>
           </tr>
-          <tr style="background:#FFFBEB;">
-            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#B45309;">15 Days</td>
-            <td style="padding:0.75rem 1rem; font-weight:700;">$15.60</td>
-            <td style="padding:0.75rem 1rem; color:#B45309; font-weight:600;">$1.04/day</td>
-            <td style="padding:0.75rem 1rem; color:#B45309; font-weight:600;">+25% more</td>
+          <tr style="background:#F1F5F9;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#94a3b8;">15 Days</td>
+            <td style="padding:0.75rem 1rem; color:#94a3b8;">—</td>
+            <td style="padding:0.75rem 1rem; color:#94a3b8;">—</td>
+            <td style="padding:0.75rem 1rem;"><span style="background:#E2E8F0; color:#94a3b8; padding:2px 8px; border-radius:999px; font-weight:600; font-size:0.8rem;">Unavailable</span></td>
           </tr>
           <tr style="background:#F0F9FF;">
             <td style="padding:0.75rem 1rem; text-align:left; font-weight:700;">1 Month <span style="background:#1D4ED8; color:#fff; font-size:0.7rem; padding:1px 6px; border-radius:999px; margin-left:4px;">Base</span></td>
@@ -394,11 +447,11 @@
             <td style="padding:0.75rem 1rem; color:#065F46; font-weight:600;">$0.75/day</td>
             <td style="padding:0.75rem 1rem;"><span style="background:#D1FAE5; color:#065F46; padding:2px 8px; border-radius:999px; font-weight:700; font-size:0.82rem;">Save 10%</span></td>
           </tr>
-          <tr style="background:#ECFDF5;">
-            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#047857;">6 Months</td>
-            <td style="padding:0.75rem 1rem; font-weight:700;">$120.00</td>
-            <td style="padding:0.75rem 1rem; color:#047857; font-weight:600;">$0.67/day</td>
-            <td style="padding:0.75rem 1rem;"><span style="background:#A7F3D0; color:#065F46; padding:2px 8px; border-radius:999px; font-weight:700; font-size:0.82rem;">Save 20%</span></td>
+          <tr style="background:#F1F5F9;">
+            <td style="padding:0.75rem 1rem; text-align:left; font-weight:600; color:#94a3b8;">6 Months</td>
+            <td style="padding:0.75rem 1rem; color:#94a3b8;">—</td>
+            <td style="padding:0.75rem 1rem; color:#94a3b8;">—</td>
+            <td style="padding:0.75rem 1rem;"><span style="background:#E2E8F0; color:#94a3b8; padding:2px 8px; border-radius:999px; font-weight:600; font-size:0.8rem;">Unavailable</span></td>
           </tr>
           <tr style="background:#D1FAE5;">
             <td style="padding:0.75rem 1rem; text-align:left; font-weight:700; color:#065F46;">1 Year 🏆</td>
@@ -409,7 +462,7 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:0.78rem; color:#94a3b8; margin-top:0.75rem; text-align:center;">* Example based on Starter plan ($25/month). All other plans scale at the same discount rates.</p>
+    <p style="font-size:0.78rem; color:#94a3b8; margin-top:0.75rem; text-align:center;">* Prices shown for the Starter plan. 7-Day / 3-Month / 1-Year checkout is available on Starter; Standard, Performance &amp; Power are billed monthly. Rows marked Unavailable are not offered for direct checkout.</p>
   </div>
 </section>
 
@@ -458,7 +511,7 @@
         <label>📅 Billing Period</label>
         <div style="display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:0.75rem;" id="order-period-buttons">
           <button type="button" class="order-period-btn" data-period="3d">3 Days</button>
-          <button type="button" class="order-period-btn" data-period="7d">7 Days</button>
+          <button type="button" class="order-period-btn" data-period="7d">7 Days <span style="font-size:0.72rem; color:#FF6B35; font-weight:700;">· Deal</span></button>
           <button type="button" class="order-period-btn" data-period="15d">15 Days</button>
           <button type="button" class="order-period-btn active" data-period="1m">1 Month</button>
           <button type="button" class="order-period-btn" data-period="3m">3 Months <span style="font-size:0.72rem; color:#10B981;">Save 10%</span></button>
@@ -596,6 +649,54 @@ const PERIOD_UNIT = {
   '1m': '/month',  '3m': '/3 mo',   '6m': '/6 mo',   '1y': '/year'
 };
 
+// ── Checkout pages (Pancake) — only these plan/period combos are purchasable ──
+const CHECKOUT_PAGES = {
+  starter: {
+    '7d': { price: 8.75,  url: 'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_0ZDa828MBtUrFfrdPcA6iF?type=subscription&currency=USD' },
+    '1m': { price: 25,    url: 'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_4HMazbpKlmtrUbsD2cnWXT?type=subscription&currency=USD' },
+    '3m': { price: 67.5,  url: 'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_3B7qbAwngBME17rTP0foDc?type=subscription&currency=USD' },
+    '1y': { price: 201,   url: 'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_6Jnc29AZ8ReVpTRktzFI6n?type=subscription&currency=USD' }
+  },
+  standard: {
+    '1m': { price: 45,    url: 'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_6tiHCdAONDakzBSKIButQ9?type=subscription&currency=USD' }
+  },
+  performance: {
+    '1m': { price: 85,    url: 'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_3AAnkHdOhOQXo8l1h38NzJ?type=subscription&currency=USD' }
+  },
+  power: {
+    '1m': { price: 160,   url: 'https://pancake.waffo.ai/store/getwireguard-com-6f2horuw/product/PROD_2bw9AH0WtoImjkcBBi5v3k?type=subscription&currency=USD' }
+  }
+};
+
+function checkoutFor(plan, period) {
+  var planMap = CHECKOUT_PAGES[plan] || {};
+  return planMap[period] || null;
+}
+
+function getSelectedPlan() {
+  return document.getElementById('config').value || '';
+}
+
+// Grey out / disable billing periods that have no listed price for the selected plan
+function updatePeriodAvailability() {
+  var plan = getSelectedPlan() || 'starter';
+  var current = document.getElementById('order-period').value || currentPeriod;
+  var currentOk = !!checkoutFor(plan, current);
+
+  ['.period-btn', '.order-period-btn'].forEach(function(sel) {
+    document.querySelectorAll(sel).forEach(function(btn) {
+      var period = btn.getAttribute('data-period');
+      var avail = !!checkoutFor(plan, period);
+      btn.disabled = !avail;
+      btn.classList.toggle('disabled', !avail);
+    });
+  });
+
+  if (!currentOk) {
+    applyPeriod('1m');
+  }
+}
+
 
 const regionNames = {
   'us-east-1':'US East (N. Virginia)','us-west-2':'US West (Oregon)','ca-central-1':'Canada (Central)',
@@ -632,6 +733,10 @@ function applyPeriod(period) {
 
   // Update each plan card
   ['starter','standard','performance','power'].forEach(function(plan) {
+    var avail = !!checkoutFor(plan, period);
+    var card = document.getElementById('card-' + plan);
+    if (card) card.classList.toggle('plan-unavailable', !avail);
+
     var total = calcPrice(plan, period);
     var days = pd.days;
     var perDay = Math.round(total / days * 100) / 100;
@@ -641,11 +746,20 @@ function applyPeriod(period) {
     document.getElementById('price-unit-' + plan).textContent = PERIOD_UNIT[period];
 
     var equivEl = document.getElementById('equiv-' + plan);
-    equivEl.textContent = '≈ ' + fmtPrice(perDay) + ' / day';
+    equivEl.textContent = avail ? ('≈ ' + fmtPrice(perDay) + ' / day') : 'Monthly billing only';
 
     var savEl = document.getElementById('savings-' + plan);
-    if (pd.savingsPct) {
+    if (!avail) {
+      savEl.style.display = 'none';
+    } else if (period === '7d') {
+      savEl.textContent = '7-Day Entry Deal';
+      savEl.style.background = '#FFF4E6';
+      savEl.style.color = '#C2410C';
+      savEl.style.display = 'inline-block';
+    } else if (pd.savingsPct) {
       savEl.textContent = 'Save ' + pd.savingsPct + '% vs monthly';
+      savEl.style.background = '#D1FAE5';
+      savEl.style.color = '#065F46';
       savEl.style.display = 'inline-block';
     } else if (pd.premium) {
       var premPct = Math.round((total / days * 30 / baseMonthly - 1) * 100);
@@ -666,6 +780,16 @@ function applyPeriod(period) {
   document.getElementById('order-period').value = period;
   document.querySelectorAll('.order-period-btn').forEach(function(b){
     b.classList.toggle('active', b.getAttribute('data-period') === period);
+  });
+
+  // 7-Day Starter deal emphasis
+  var starterCard = document.getElementById('card-starter');
+  if (starterCard) starterCard.classList.toggle('deal-highlight', period === '7d');
+  document.querySelectorAll('.period-btn').forEach(function(b){
+    b.classList.toggle('deal-active', b.getAttribute('data-period') === '7d' && period === '7d');
+  });
+  document.querySelectorAll('.order-period-btn').forEach(function(b){
+    b.classList.toggle('deal-active', b.getAttribute('data-period') === '7d' && period === '7d');
   });
 
   updateSummary();
@@ -718,8 +842,9 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(function(ip){ document.getElementById('ip_address').value = ip.trim(); })
     .catch(function(){ document.getElementById('ip_address').value = 'N/A'; });
 
-  // Apply default period
+  // Apply default period, then gate unavailable billing periods
   applyPeriod('1m');
+  updatePeriodAvailability();
 });
 
 function selectRegion(region) {
@@ -741,6 +866,7 @@ function selectConfig(config) {
     btn.style.color       = sel ? 'white'   : '#1A1A2E';
     btn.style.borderColor = sel ? '#10B981' : '#d1d5db';
   });
+  updatePeriodAvailability();
   updateSummary();
 }
 
@@ -787,7 +913,13 @@ function submitForm() {
 
   var regionName  = regionNames[region];
   var configName  = configNames[config];
-  var total       = calcPrice(config, period);
+  var checkout    = checkoutFor(config, period);
+  if (!checkout) {
+    errorMsg.innerHTML = '<strong>Error!</strong> The selected plan/billing period is not available for direct checkout. Please choose another option.';
+    errorMsg.style.display = 'block';
+    return;
+  }
+  var total       = checkout.price;
   var periodLabel = PERIODS[period].label;
   var ipLink = ip !== 'N/A'
     ? '<a href="https://ipinfo.io/'+ip+'" style="color:#1D4ED8;font-family:monospace;">'+ip+'</a>'
@@ -838,9 +970,8 @@ function submitForm() {
     })
   }).then(function(r){ console.log('Pingram notify:', r.status); }).catch(function(e){ console.warn(e); });
 
-  // Redirect to payment page
-  var paymentUrl = 'payment.html?email=' + encodeURIComponent(email) + '&amount=' + encodeURIComponent(total.toFixed(2));
-  window.location.href = paymentUrl;
+  // Redirect to the corresponding Pancake checkout page
+  window.location.href = checkout.url;
 }
 </script>
 
